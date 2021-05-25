@@ -1,0 +1,14 @@
+<button mat-raised-button color="primary" [routerLink]="'./post/create'">add post</button>
+
+<h1>Hello, this is my blog. Im posting my experiments below.</h1>
+<div *ngFor="let post of posts$ | async; let i = index">
+  <p>Title: <a [routerLink]="'./post/' + post.url">{{ post.title }}</a></p>
+  <p>Author: {{ post.author }}</p>
+  <p>Content: {{ post.content }}</p>
+  <p>Tags:
+    <span *ngFor="let tag of post.tags">
+      <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+  </span>
+  </p>
+  <hr>
+</div>
