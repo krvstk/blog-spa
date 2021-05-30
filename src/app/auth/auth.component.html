@@ -1,0 +1,49 @@
+<mat-card class="auth-card mat-elevation-z4" fxLayout="column" fxLayoutAlign="center center">
+  <p *ngIf="loggedUser">{{ loggedUser.displayName}}</p>
+  <mat-card-header fxLayoutGap="10px" *ngIf="!loggedUser; else showLogoutTitle">
+    <mat-card-title class="card-title">Login form</mat-card-title>
+    <mat-icon
+      matTooltipPosition="right"
+      matTooltip="Данный сайт используется персонально и не предназначен для создания новых учетных записей.
+                  Login form используется только для авторизации владельца сайта">
+      info
+    </mat-icon>
+  </mat-card-header>
+
+  <ng-template #showLogoutTitle>
+    <mat-card-header>
+      <mat-card-title class="card-title">Logout</mat-card-title>
+    </mat-card-header>
+  </ng-template>
+
+  <mat-card-content *ngIf="!loggedUser">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input [(ngModel)]="email" type="text" title="Email" matInput required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input [(ngModel)]="password" type="password" title="Password" matInput required>
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      *ngIf="!loggedUser; else showLogoutButton"
+      (click)="login()"
+      mat-raised-button
+      color="primary">Login
+    </button>
+    <ng-template #showLogoutButton>
+      <button
+        (click)="logout()"
+        mat-raised-button
+        color="primary">Logout
+      </button>
+    </ng-template>
+  </mat-card-actions>
+
+</mat-card>

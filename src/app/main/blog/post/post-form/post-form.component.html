@@ -30,7 +30,9 @@
 
 </form>
 
-<button *ngIf="!post.url; else editPostButton" mat-raised-button (click)="createPost()">Create post</button>
-<ng-template #editPostButton>
-  <button mat-raised-button (click)="editPost()">Edit post</button>
-</ng-template>
+<div class="form-buttons" *ngIf="!loggedUser">
+  <button *ngIf="!post.url; else editPostButton" mat-raised-button (click)="createPost()">Create post</button>
+  <ng-template #editPostButton>
+    <button mat-raised-button (click)="editPost()">Edit post</button>
+  </ng-template>
+</div>
