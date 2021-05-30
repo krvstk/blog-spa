@@ -1,4 +1,4 @@
-<button mat-raised-button color="primary" [routerLink]="'./post/create'">add post</button>
+<button *ngIf="loggedUser" mat-raised-button color="primary" [routerLink]="'./post/create'">add post</button>
 
 <h1>Hello, this is my blog. Im posting my experiments below.</h1>
 <div *ngFor="let post of posts$ | async; let i = index">
