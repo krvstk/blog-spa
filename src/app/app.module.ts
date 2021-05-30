@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FlexModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
+import { FlexModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './auth/auth.module';
 import { environment } from '../environments/environment';
 
 
@@ -24,6 +25,7 @@ import { environment } from '../environments/environment';
     FlexModule,
 
     AppRoutingModule,
+    AuthModule,
   ],
   bootstrap: [AppComponent],
 })
