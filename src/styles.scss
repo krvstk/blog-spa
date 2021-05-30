@@ -5,3 +5,17 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.snackbar-error {
+  background: crimson;
+  color: azure;
+}
+
+.snackbar-success {
+  background-color: green;
+  color: azure;
+
+  .mat-button-wrapper {
+    color: azure !important;
+  }
+}
