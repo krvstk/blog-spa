@@ -6,6 +6,8 @@ export class Post {
   doc?: any;
   url: string;
   tags: string[];
+  dateCreated: any;
+  dateEdited?: any;
 
   constructor(post?: any) {
     post = post || {}
@@ -16,5 +18,7 @@ export class Post {
     this.doc = post.doc;
     this.url = post.url;
     this.tags = post.tags;
+    this.dateCreated = post.dateCreated;
+    this.dateEdited = post.dateEdited;
   }
 }

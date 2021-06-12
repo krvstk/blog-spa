@@ -7,6 +7,8 @@
   <p>Author: {{ post.author }}</p>
   <p>Title: {{ post.title }}</p>
   <p>Content: {{ post.content }}</p>
+  <p>Created: {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}</p>
+  <p *ngIf="post.dateEdited">Edited: {{ post.dateEdited.toDate() | date:'d MMMM yyyy' }}</p>
   <p>Tags:
     <span *ngFor="let tag of post.tags">
       <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
