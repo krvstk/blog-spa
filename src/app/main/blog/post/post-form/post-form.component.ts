@@ -1,11 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import firebase from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { AuthService } from '../../../../auth/auth.service';
 import { BlogService } from '../../blog.service';
@@ -18,12 +15,10 @@ import { Post } from '../post.model';
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss']
 })
-export class PostFormComponent implements OnInit, OnDestroy {
+export class PostFormComponent implements OnInit {
 
   form: FormGroup;
   post: Post;
-  private unsubscribe: Subject<any>;
-  loggedUser: firebase.User;
 
   constructor(
     private authService: AuthService,
@@ -33,7 +28,6 @@ export class PostFormComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {
     this.post = new Post(this.router.getCurrentNavigation().extras.state);
-    this.unsubscribe = new Subject();
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -48,18 +42,6 @@ export class PostFormComponent implements OnInit, OnDestroy {
       url: this.post.url,
       tags: [this.post.tags],
     });
-    this.authService.userSubject$
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(
-        (user: firebase.User) => {
-          this.loggedUser = user;
-        }
-      );
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -68,6 +50,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
 
   createPost(): void {
     this.form.value.tags = this.form.value.tags ? this.form.value.tags.split(',') : null;
+    this.form.value.dateCreated = new Date();
     this.firestore.collection('posts').doc<Post>(this.form.value.url).set(this.form.value)
       .then(
         () => {
@@ -81,6 +64,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
 
   editPost(): void {
     const changedValues = BlogUtils.getChangedFields(this.form);
+    changedValues['dateEdited'] = new Date();
     changedValues['tags'] = changedValues['tags'] ? changedValues['tags'].split(',') : null;
     this.firestore.doc<Post>('posts/' + this.post.url).update(changedValues)
       .then(
