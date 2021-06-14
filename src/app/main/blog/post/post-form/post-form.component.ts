@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as CustomEditor from 'src/assets/ckeditor/ckeditor';
 
 import { AuthService } from '../../../../auth/auth.service';
 import { BlogService } from '../../blog.service';
@@ -13,12 +14,13 @@ import { Post } from '../post.model';
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
-  styleUrls: ['./post-form.component.scss']
+  styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
 
   form: FormGroup;
   post: Post;
+  public Editor = CustomEditor;
 
   constructor(
     private authService: AuthService,
@@ -38,6 +40,7 @@ export class PostFormComponent implements OnInit {
     this.form = this.fb.group({
       author: this.post.author,
       title: this.post.title,
+      description: this.post.description,
       content: this.post.content,
       url: this.post.url,
       tags: [this.post.tags],
