@@ -68,7 +68,7 @@ export class PostFormComponent implements OnInit {
   editPost(): void {
     const changedValues = BlogUtils.getChangedFields(this.form);
     changedValues['dateEdited'] = new Date();
-    changedValues['tags'] = changedValues['tags'] ? changedValues['tags'].split(',') : null;
+    changedValues['tags'] = changedValues['tags'] ? changedValues['tags'].split(',') : this.form.value.tags;
     this.firestore.doc<Post>('posts/' + this.post.url).update(changedValues)
       .then(
         () => {
