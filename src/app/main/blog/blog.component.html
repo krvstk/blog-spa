@@ -8,7 +8,7 @@
   <p>Created: {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}</p>
   <p>Tags:
     <span *ngFor="let tag of post.tags">
-      <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+      <a [routerLink]="'/blog/tag/' + tag.trim()">{{ tag }}</a>
   </span>
   </p>
   <hr>

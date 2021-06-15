@@ -29,7 +29,7 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
   },
   {
-    path: 'tag/:tagUrl',
+    path: 'tag/:tag',
     component: TagsComponent,
   },
 ];
