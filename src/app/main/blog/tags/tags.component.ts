@@ -13,7 +13,7 @@ import { Post } from '../post/post.model';
 })
 export class TagsComponent implements OnInit {
   posts: Post[];
-  tagUrl: string;
+  tag: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,14 +21,27 @@ export class TagsComponent implements OnInit {
   ) {
   }
 
+  // -----------------------------------------------------------------------------------------------------
+  // @ Lifecycle hooks
+  // -----------------------------------------------------------------------------------------------------
+
   ngOnInit(): void {
     this.activatedRoute.params
       .subscribe(
         (params: Params) => {
-          this.tagUrl = params.tagUrl;
+          this.tag = params.tag;
         }
       );
-    this.firestore.collection<Post>('posts', ref => ref.where('tags', 'array-contains', this.tagUrl)).valueChanges()
+    this.findPostsByTag(this.tag);
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
+
+  findPostsByTag(tag): void {
+    this.tag = tag;
+    this.firestore.collection<Post>('posts', ref => ref.where('tags', 'array-contains', tag)).valueChanges()
       .subscribe(
         (postsByTag: Post[]) => {
           this.posts = postsByTag;
