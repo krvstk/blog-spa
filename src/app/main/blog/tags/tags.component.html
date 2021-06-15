@@ -1,11 +1,11 @@
-<h1>Posts with tag: {{ tagUrl }}</h1>
+<h1>Posts with tag: {{ tag }}</h1>
 <div *ngFor="let post of posts; let i = index">
   <p>Title: <a [routerLink]="'/blog/post/' + post.url">{{post.title}}</a></p>
   <p>Author: {{ post.author }}</p>
-  <p>Content: {{ post.content }}</p>
+  <p>Description: {{ post.description }}</p>
   <p>Tags:
     <span *ngFor="let tag of post.tags">
-      <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+      <a [routerLink]="" (click)="findPostsByTag(tag)">{{ tag }}</a>
   </span>
   </p>
   <hr>
