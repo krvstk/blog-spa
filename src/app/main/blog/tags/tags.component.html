@@ -1,3 +1,4 @@
+<app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 <h1>Posts with tag: {{ tag }}</h1>
 <div *ngFor="let post of posts; let i = index">
   <p>Title: <a [routerLink]="'/blog/post/' + post.url">{{post.title}}</a></p>

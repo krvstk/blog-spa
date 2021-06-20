@@ -4,7 +4,7 @@ import UserCredential = firebase.auth.UserCredential;
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { SnackBarService } from '@core/services/snack-bar.service';
-import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -13,28 +13,18 @@ import { BehaviorSubject, from, Observable, Subject } from 'rxjs';
 export class AuthService {
 
   user: firebase.User;
-  // user$: Observable<UserCredential>;
   userSubject$: BehaviorSubject<firebase.User>;
 
   constructor(private router: Router,
               private auth: AngularFireAuth,
               private snackBarService: SnackBarService) {
     this.userSubject$ = new BehaviorSubject<firebase.User>(null);
-    // this.auth.onAuthStateChanged(
-    //   (user) => {
-    //     if (user) {
-    //       this.userSubject$.next(user);
-    //     } else {
-    //       this.userSubject$.next(null);
-    //     }
-    //   });
   }
 
   signInWithEmailAndPassword(email: string, password: string): Promise<void | UserCredential> {
     return this.auth.signInWithEmailAndPassword(email, password)
       .then(
         (res: UserCredential) => {
-          // this.user$ = from(new Promise<UserCredential>(resolve => resolve(res)));
           this.user = res.user;
           this.snackBarService.open('Login success!', 'OK',
             {

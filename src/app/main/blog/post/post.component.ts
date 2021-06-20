@@ -17,6 +17,7 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class PostComponent implements OnInit, OnDestroy {
 
+  isLoading: boolean;
   loggedUser: firebase.User;
   post: Post;
   postUrl: string;
@@ -36,6 +37,7 @@ export class PostComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.activatedRoute.params
       .subscribe(
         (params: Params) => {
@@ -46,6 +48,7 @@ export class PostComponent implements OnInit, OnDestroy {
       .subscribe(
         (post: Post) => {
           this.post = post;
+          this.isLoading = false;
         },
         (error) => {
           console.log(error);
