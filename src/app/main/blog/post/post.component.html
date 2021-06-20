@@ -1,3 +1,4 @@
+<app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 <div *ngIf="post">
   <div *ngIf="loggedUser">
     <button mat-raised-button color="primary" (click)="onEditPost()">edit post</button>
@@ -13,7 +14,7 @@
   <p *ngIf="post.dateEdited">Edited: {{ post.dateEdited.toDate() | date:'d MMMM yyyy' }}</p>
   <p>Tags:
     <span *ngFor="let tag of post.tags">
-      <a [routerLink]="'/blog/tag/' + tag.trim()">{{ tag }}</a>
+      <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
   </span>
   </p>
 </div>

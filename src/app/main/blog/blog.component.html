@@ -1,14 +1,15 @@
+<app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 <button *ngIf="loggedUser" mat-raised-button color="primary" [routerLink]="'./post/create'">add post</button>
 
 <h1>Hello, this is my blog. Im posting my experiments below.</h1>
-<div *ngFor="let post of posts$ | async; let i = index">
+<div *ngFor="let post of posts; let i = index">
   <p>Title: <a [routerLink]="'./post/' + post.url">{{ post.title }}</a></p>
   <p>Author: {{ post.author }}</p>
   <p>Description: {{ post.description }}</p>
   <p>Created: {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}</p>
   <p>Tags:
     <span *ngFor="let tag of post.tags">
-      <a [routerLink]="'/blog/tag/' + tag.trim()">{{ tag }}</a>
+      <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
   </span>
   </p>
   <hr>

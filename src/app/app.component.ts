@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { AuthService } from './auth/auth.service';
+import firebase from 'firebase';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class AppComponent {
 
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
   }
 
@@ -24,7 +25,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.angularFireAuth.onAuthStateChanged(
-      (user) => {
+      (user: firebase.User) => {
         if (user) {
           this.authService.userSubject$.next(user);
         } else {
