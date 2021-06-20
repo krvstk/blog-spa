@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { BlogComponent } from './blog.component';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogService } from './blog.service';
+import { LoaderSpinnerModule } from '@core/components/loader-spinner/loader-spinner.module';
 import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -42,6 +43,7 @@ import { environment } from '../../../environments/environment';
     MatInputModule,
 
     BlogRoutingModule,
+    LoaderSpinnerModule,
     SharedModule,
   ],
   providers: [

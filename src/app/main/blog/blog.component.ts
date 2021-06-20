@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import firebase from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Post } from './post/post.model';
@@ -17,7 +17,8 @@ import { AuthService } from '../../auth/auth.service';
 export class BlogComponent implements OnInit, OnDestroy {
 
   loggedUser: firebase.User;
-  posts$: Observable<Post[]>;
+  posts: Post[];
+  isLoading: boolean;
   private unsubscribe: Subject<any>;
 
   constructor(
@@ -32,7 +33,14 @@ export class BlogComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
 
   ngOnInit(): void {
-    this.posts$ = this.firestore.collection<Post>('posts').valueChanges();
+    this.isLoading = true;
+    this.firestore.collection<Post>('posts').valueChanges()
+      .subscribe(
+        (posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+        }
+      );
     this.authService.userSubject$
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
