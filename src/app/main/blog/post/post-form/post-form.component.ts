@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AngularFirestore } from '@angular/fire/firestore';
-import * as CustomEditor from 'src/assets/ckeditor/ckeditor';
+// import * as CustomEditor from 'src/assets/ckeditor/ckeditor';
+import * as CustomEditor from 'src/app/@core/ckeditor5/packages/ckeditor5-build-classic/build/ckeditor';
 
 import { AuthService } from '../../../../auth/auth.service';
 import { BlogService } from '../../blog.service';
