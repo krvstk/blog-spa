@@ -17,7 +17,8 @@ export class AuthService {
 
   constructor(private router: Router,
               private auth: AngularFireAuth,
-              private snackBarService: SnackBarService) {
+              private snackBarService: SnackBarService,
+  ) {
     this.userSubject$ = new BehaviorSubject<firebase.User>(null);
   }
 
@@ -34,7 +35,7 @@ export class AuthService {
           this.router.navigate(['/blog']);
         })
       .catch(
-        (error) => {
+        (error: Error) => {
           this.snackBarService.open(error.message, null,
             {
               duration: 10000,

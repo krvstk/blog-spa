@@ -6,6 +6,7 @@
   </div>
   <p>Post:</p>
   <p>Author: {{ post.author }}</p>
+  <img [src]=post.imageUrl alt="thumbnail" (load)="isLoading = false" (error)="isLoading = false">
   <p>Title: {{ post.title }}</p>
   <div>Content:
     <div [innerHTML]="post.content | sanitizeHtml"></div>
