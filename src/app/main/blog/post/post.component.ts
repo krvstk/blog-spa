@@ -48,7 +48,6 @@ export class PostComponent implements OnInit, OnDestroy {
       .subscribe(
         (post: Post) => {
           this.post = post;
-          this.isLoading = false;
         },
         (error) => {
           console.log(error);

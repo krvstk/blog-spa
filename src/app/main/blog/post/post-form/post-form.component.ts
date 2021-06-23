@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 // import * as CustomEditor from 'src/assets/ckeditor/ckeditor';
 import * as CustomEditor from 'src/app/@core/ckeditor5/packages/ckeditor5-build-classic/build/ckeditor';
 
@@ -10,6 +11,7 @@ import { AuthService } from '../../../../auth/auth.service';
 import { BlogService } from '../../blog.service';
 import { BlogUtils } from '@core/utils';
 import { Post } from '../post.model';
+import { SnackBarService } from '@core/services/snack-bar.service';
 
 
 @Component({
@@ -19,8 +21,10 @@ import { Post } from '../post.model';
 })
 export class PostFormComponent implements OnInit {
 
+  selectFileEventTarget: HTMLInputElement;
   form: FormGroup;
   post: Post;
+  imageUrl: string | ArrayBuffer;
   public Editor = CustomEditor;
 
   constructor(
@@ -28,7 +32,9 @@ export class PostFormComponent implements OnInit {
     private blogService: BlogService,
     private fb: FormBuilder,
     private firestore: AngularFirestore,
+    private fireStorage: AngularFireStorage,
     private router: Router,
+    private snackBarService: SnackBarService,
   ) {
     this.post = new Post(this.router.getCurrentNavigation().extras.state);
   }
@@ -53,6 +59,7 @@ export class PostFormComponent implements OnInit {
   // -----------------------------------------------------------------------------------------------------
 
   createPost(): void {
+    console.log('create', this.form.value);
     this.form.value.tags = this.form.value.tags ? this.form.value.tags.split(',') : null;
     this.form.value.dateCreated = new Date();
     this.firestore.collection('posts').doc<Post>(this.form.value.url).set(this.form.value)
@@ -70,6 +77,7 @@ export class PostFormComponent implements OnInit {
     const changedValues = BlogUtils.getChangedFields(this.form);
     changedValues['dateEdited'] = new Date();
     changedValues['tags'] = changedValues['tags'] ? changedValues['tags'].split(',') : this.form.value.tags;
+    changedValues['imageUrl'] = this.form.value.imageUrl ?? this.post.imageUrl;
     this.firestore.doc<Post>('posts/' + this.post.url).update(changedValues)
       .then(
         () => {
@@ -81,5 +89,40 @@ export class PostFormComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  async uploadDescriptionImage(): Promise<void> {
+    const uploadSnap = await this.fireStorage.upload(
+      this.selectFileEventTarget.files[0].name,
+      this.selectFileEventTarget.files[0]
+    );
+    await uploadSnap.ref.getDownloadURL()
+      .then(
+        (uploadedImageUrl: string) => {
+          this.form.value.imageUrl = uploadedImageUrl;
+          this.snackBarService.open('Successfully uploaded!', 'OK',
+            {
+              duration: 5000,
+              panelClass: ['snackbar-success'],
+            });
+        })
+      .catch(
+        (error: Error) => {
+          this.snackBarService.open(error.message, null,
+            {
+              duration: 10000,
+              panelClass: ['snackbar-error']
+            });
+        });
+  }
+
+  parseImage($event: Event): void {
+    this.selectFileEventTarget = $event.target as HTMLInputElement;
+    if (this.selectFileEventTarget.files && this.selectFileEventTarget.files[0]) {
+      const file = this.selectFileEventTarget.files[0];
+      const reader = new FileReader();
+      reader.onload = () => this.imageUrl = reader.result;
+      reader.readAsDataURL(file);
+    }
   }
 }
