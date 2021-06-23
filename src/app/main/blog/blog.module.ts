@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FlexModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,6 +36,7 @@ import { environment } from '../../../environments/environment';
 
     AngularFireAnalyticsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     AngularFirestoreModule,
     CKEditorModule,
     FlexModule,
