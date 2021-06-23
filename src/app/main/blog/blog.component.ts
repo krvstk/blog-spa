@@ -38,7 +38,6 @@ export class BlogComponent implements OnInit, OnDestroy {
       .subscribe(
         (posts: Post[]) => {
           this.posts = posts;
-          this.isLoading = false;
         }
       );
     this.authService.userSubject$

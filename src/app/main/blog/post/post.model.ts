@@ -9,6 +9,7 @@ export class Post {
   dateCreated: any;
   dateEdited?: any;
   description: string;
+  imageUrl: string;
 
   constructor(post?: any) {
     post = post || {}
@@ -22,5 +23,6 @@ export class Post {
     this.dateCreated = post.dateCreated;
     this.dateEdited = post.dateEdited;
     this.description = post.description;
+    this.imageUrl = post.imageUrl;
   }
 }

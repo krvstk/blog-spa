@@ -4,6 +4,7 @@
 <h1>Hello, this is my blog. Im posting my experiments below.</h1>
 <div *ngFor="let post of posts; let i = index">
   <p>Title: <a [routerLink]="'./post/' + post.url">{{ post.title }}</a></p>
+  <img [src]=post.imageUrl alt="thumbnail" (load)="isLoading = false" (error)="isLoading = false">
   <p>Author: {{ post.author }}</p>
   <p>Description: {{ post.description }}</p>
   <p>Created: {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}</p>
