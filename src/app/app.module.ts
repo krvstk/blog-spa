@@ -10,11 +10,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { environment } from '../environments/environment';
+import { PagenotfoundComponent } from './@core/components/pagenotfound/pagenotfound.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserAnimationsModule,
