@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-// import * as CustomEditor from 'src/assets/ckeditor/ckeditor';
-import * as CustomEditor from 'src/app/@core/ckeditor5/packages/ckeditor5-build-classic/build/ckeditor';
+import { QuillEditorComponent } from 'ngx-quill';
 
 import { AuthService } from '../../../../auth/auth.service';
 import { BlogService } from '../../blog.service';
@@ -25,7 +24,7 @@ export class PostFormComponent implements OnInit {
   form: FormGroup;
   post: Post;
   imageUrl: string | ArrayBuffer;
-  public Editor = CustomEditor;
+  @ViewChild('editor', { static: true}) editor: QuillEditorComponent
 
   constructor(
     private authService: AuthService,
@@ -59,7 +58,6 @@ export class PostFormComponent implements OnInit {
   // -----------------------------------------------------------------------------------------------------
 
   createPost(): void {
-    console.log('create', this.form.value);
     this.form.value.tags = this.form.value.tags ? this.form.value.tags.split(',') : null;
     this.form.value.dateCreated = new Date();
     this.firestore.collection('posts').doc<Post>(this.form.value.url).set(this.form.value)
