@@ -8,9 +8,7 @@
   <p>Author: {{ post.author }}</p>
   <img [src]=post.imageUrl alt="thumbnail" (load)="isLoading = false" (error)="isLoading = false">
   <p>Title: {{ post.title }}</p>
-  <div>Content:
-    <div [innerHTML]="post.content | sanitizeHtml"></div>
-  </div>
+  <quill-view-html [content]="post.content" format="text" theme="snow"></quill-view-html>
   <p>Created: {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}</p>
   <p *ngIf="post.dateEdited">Edited: {{ post.dateEdited.toDate() | date:'d MMMM yyyy' }}</p>
   <p>Tags:
