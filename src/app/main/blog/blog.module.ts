@@ -6,11 +6,11 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FlexModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { QuillModule } from 'ngx-quill';
 
 import { BlogComponent } from './blog.component';
 import { BlogRoutingModule } from './blog-routing.module';
@@ -38,11 +38,11 @@ import { environment } from '../../../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFirestoreModule,
-    CKEditorModule,
     FlexModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    QuillModule.forRoot(),
 
     BlogRoutingModule,
     LoaderSpinnerModule,

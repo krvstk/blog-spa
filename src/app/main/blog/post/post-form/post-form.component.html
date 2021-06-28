@@ -18,7 +18,7 @@
     <input matInput formControlName="title">
   </mat-form-field>
 
-  <ckeditor formControlName="content" [editor]="Editor" data="Content"></ckeditor>
+  <quill-editor style="height: 500px;" #editor formControlName="content"></quill-editor>
   <br>
 
   <mat-form-field appearance="outline">
