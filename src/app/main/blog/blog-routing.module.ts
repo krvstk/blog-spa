@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { AngularFireAuthGuard, isNotAnonymous } from '@angular/fire/auth-guard';
+import { map } from 'rxjs/operators';
+import { pipe } from 'rxjs';
 
 import { BlogComponent } from './blog.component';
 import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
 import { TagsComponent } from './tags/tags.component';
 
+
+export const redirectAnonymousTo = (redirect: any[]) =>
+  pipe(isNotAnonymous, map(loggedIn => loggedIn || redirect)
+  );
+
+const redirectUnauthorizedToLogin = () => redirectAnonymousTo(['404']);
 
 const routes: Routes = [
   {
@@ -18,6 +26,7 @@ const routes: Routes = [
     path: 'post/create',
     component: PostFormComponent,
     canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'post/:postUrl',
@@ -27,6 +36,7 @@ const routes: Routes = [
     path: 'post/:postUrl/edit',
     component: PostFormComponent,
     canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'tag/:tag',
