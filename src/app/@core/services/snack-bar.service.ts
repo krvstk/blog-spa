@@ -10,9 +10,25 @@ import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
 })
 export class SnackBarService {
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) {
+  }
 
-  open(message: string, action?: string, config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar> {
-    return this.snackBar.open(message, action, config)
+  open(message: string, action?: string, configCase?: string): MatSnackBarRef<TextOnlySnackBar> {
+    let config: MatSnackBarConfig = {};
+    switch (configCase) {
+      case 'SUCCESS':
+        config = {
+          duration: 5000,
+          panelClass: ['snackbar-success']
+        };
+        break;
+      case 'FAIL':
+        config = {
+          duration: 10000,
+          panelClass: ['snackbar-error']
+        };
+        break;
+    }
+    return this.snackBar.open(message, action, config);
   }
 }
