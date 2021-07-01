@@ -27,20 +27,12 @@ export class AuthService {
       .then(
         (res: UserCredential) => {
           this.user = res.user;
-          this.snackBarService.open('Login success!', 'OK',
-            {
-              duration: 5000,
-              panelClass: ['snackbar-success']
-            });
+          this.snackBarService.open('Login success!', 'OK', 'SUCCESS');
           this.router.navigate(['/blog']);
         })
       .catch(
         (error: Error) => {
-          this.snackBarService.open(error.message, null,
-            {
-              duration: 10000,
-              panelClass: ['snackbar-error']
-            });
+          this.snackBarService.open(error.message, 'OK', 'FAIL');
         });
   }
 
@@ -48,11 +40,7 @@ export class AuthService {
     return this.auth.signOut()
       .then(
         () => {
-          this.snackBarService.open('Logout success!', 'OK',
-            {
-              duration: 5000,
-              panelClass: ['snackbar-success']
-            });
+          this.snackBarService.open('Logout success!', 'OK','SUCCESS');
         });
   }
 }
