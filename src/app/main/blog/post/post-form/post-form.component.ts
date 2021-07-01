@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -50,7 +50,8 @@ export class PostFormComponent implements OnInit {
       content: this.post.content,
       url: this.post.url,
       tags: [this.post.tags],
-    });
+    },
+      {validator: [Validators.required]});
   }
 
   // -----------------------------------------------------------------------------------------------------

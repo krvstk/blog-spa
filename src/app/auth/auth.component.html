@@ -34,6 +34,7 @@
     <button
       *ngIf="!loggedUser; else showLogoutButton"
       (click)="login()"
+      [disabled]="!password || !email"
       mat-raised-button
       color="primary">Login
     </button>
