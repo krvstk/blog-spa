@@ -34,7 +34,8 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.firestore.collection<Post>('posts').valueChanges()
+    this.firestore.collection<Post>('posts', ref => ref.orderBy('dateCreated', 'desc'))
+      .valueChanges()
       .subscribe(
         (posts: Post[]) => {
           this.posts = posts;
