@@ -99,19 +99,11 @@ export class PostFormComponent implements OnInit {
       .then(
         (uploadedImageUrl: string) => {
           this.form.value.imageUrl = uploadedImageUrl;
-          this.snackBarService.open('Successfully uploaded!', 'OK',
-            {
-              duration: 5000,
-              panelClass: ['snackbar-success'],
-            });
+          this.snackBarService.open('Successfully uploaded!', 'OK', 'SUCCESS');
         })
       .catch(
         (error: Error) => {
-          this.snackBarService.open(error.message, null,
-            {
-              duration: 10000,
-              panelClass: ['snackbar-error']
-            });
+          this.snackBarService.open(error.message, 'OK', 'FAIL');
         });
   }
 
