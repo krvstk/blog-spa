@@ -3,11 +3,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import firebase from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { Post } from './post.model';
 import { AuthService } from '../../../auth/auth.service';
+import { ConfirmDialogueComponent } from '@core/components/confirm-dialogue/confirm-dialogue.component';
+import { Post } from './post.model';
+import { SnackBarService } from '@core/services/snack-bar.service';
 
 
 @Component({
@@ -28,6 +31,8 @@ export class PostComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private firestore: AngularFirestore,
     private router: Router,
+    public matDialog: MatDialog,
+    private snackbarService: SnackBarService
   ) {
     this.unsubscribe = new Subject();
   }
@@ -70,13 +75,28 @@ export class PostComponent implements OnInit, OnDestroy {
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
 
-  onDeletePost(): void {
-    this.firestore.doc<Post>('posts/' + this.post.url).delete()
-      .then(
-        () => {
-          this.router.navigate(['/blog']);
-        }
-      );
+  onDeletePost(postTitle = null): void {
+    const confirmDialogRef = this.matDialog.open(ConfirmDialogueComponent, {
+      width: '25%',
+      minWidth: '250px',
+      minHeight: '250px'
+    });
+
+    confirmDialogRef.componentInstance.confirmMessage = `Do you want to delete post ${postTitle}?`;
+
+    confirmDialogRef.afterClosed().subscribe((response) => {
+      if (response) {
+        this.firestore.doc<Post>('posts/' + this.post.url).delete()
+          .then(
+            () => {
+              this.snackbarService.open(`${postTitle} deleted!`, 'OK', 'SUCCESS');
+              this.router.navigate(['/blog']);
+            })
+          .catch((error) => {
+            this.snackbarService.open(error, 'OK', 'FAIL');
+          });
+      }
+    });
   }
 
   onEditPost(): void {
