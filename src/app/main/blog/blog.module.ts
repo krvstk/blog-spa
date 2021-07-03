@@ -15,6 +15,7 @@ import { QuillModule } from 'ngx-quill';
 import { BlogComponent } from './blog.component';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogService } from './blog.service';
+import { ConfirmDialogueModule } from '@core/components/confirm-dialogue/confirm-dialogue.module';
 import { LoaderSpinnerModule } from '@core/components/loader-spinner/loader-spinner.module';
 import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
@@ -45,6 +46,7 @@ import { environment } from '../../../environments/environment';
     QuillModule.forRoot(),
 
     BlogRoutingModule,
+    ConfirmDialogueModule,
     LoaderSpinnerModule,
     SharedModule,
   ],
