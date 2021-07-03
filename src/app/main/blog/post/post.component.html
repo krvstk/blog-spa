@@ -2,7 +2,7 @@
 <div *ngIf="post">
   <div *ngIf="loggedUser">
     <button mat-raised-button color="primary" (click)="onEditPost()">edit post</button>
-    <button mat-raised-button color="primary" (click)="onDeletePost()">delete post</button>
+    <button mat-raised-button color="primary" (click)="onDeletePost(post.title)">delete post</button>
   </div>
   <p>Post:</p>
   <p>Author: {{ post.author }}</p>
