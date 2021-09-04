@@ -33,7 +33,7 @@
 
   <input type="file" (change)="parseImage($event)">
   <img *ngIf="selectFileEventTarget || post.imageUrl"
-       [src]="imageUrl || post.imageUrl"
+       [src]="parsedImage || post.imageUrl"
        alt="thumbnail"
        width="100"
        height="100">
