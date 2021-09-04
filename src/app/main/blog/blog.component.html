@@ -15,3 +15,15 @@
   </p>
   <hr>
 </div>
+<button
+  mat-raised-button color="primary"
+  [disabled]="pageNumber === 1"
+  (click)="onPreviousPage()">Previous page
+</button>
+Page number: {{ pageNumber }}
+<button
+  mat-raised-button color="primary"
+  (click)="onNextPage()"
+  [disabled]="nextPageButtonDisabled || posts.length < pageSize">Next page
+</button>
+
