@@ -44,12 +44,14 @@ export class PostComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isLoading = true;
     this.activatedRoute.params
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (params: Params) => {
           this.postUrl = params.postUrl;
         }
       );
     this.firestore.doc<Post>('posts/' + this.postUrl).valueChanges()
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (post: Post) => {
           this.post = post;
