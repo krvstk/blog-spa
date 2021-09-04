@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Post } from '../post/post.model';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -16,12 +18,14 @@ export class TagsComponent implements OnInit {
   posts: Post[];
   tag: string;
   isLoading: boolean;
+  private unsubscribe: Subject<any>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private firestore: AngularFirestore,
     private location: Location,
   ) {
+    this.unsubscribe = new Subject();
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -30,12 +34,18 @@ export class TagsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (params: Params) => {
           this.tag = params.tag;
         }
       );
     this.findPostsByTag(this.tag);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -46,7 +56,9 @@ export class TagsComponent implements OnInit {
     this.isLoading = true;
     this.tag = tag;
     this.location.replaceState('/blog/tag/' + tag);
-    this.firestore.collection<Post>('posts', ref => ref.where('tags', 'array-contains', tag)).valueChanges()
+    this.firestore.collection<Post>('posts', ref => ref.where('tags', 'array-contains', tag))
+      .valueChanges()
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (postsByTag: Post[]) => {
           this.posts = postsByTag;
