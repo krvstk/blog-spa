@@ -23,7 +23,8 @@ export class PostFormComponent implements OnInit {
   selectFileEventTarget: HTMLInputElement;
   form: FormGroup;
   post: Post;
-  imageUrl: string | ArrayBuffer;
+  updatedImageUrl: string;
+  parsedImage: string | ArrayBuffer;
   @ViewChild('editor', { static: true}) editor: QuillEditorComponent
 
   constructor(
@@ -76,7 +77,7 @@ export class PostFormComponent implements OnInit {
     const changedValues = BlogUtils.getChangedFields(this.form);
     changedValues['dateEdited'] = new Date();
     changedValues['tags'] = changedValues['tags'] ? changedValues['tags'].split(',') : this.form.value.tags;
-    changedValues['imageUrl'] = this.form.value.imageUrl ?? this.post.imageUrl;
+    changedValues['imageUrl'] = this.updatedImageUrl ?? this.post.imageUrl;
     this.firestore.doc<Post>('posts/' + this.post.url).update(changedValues)
       .then(
         () => {
@@ -98,7 +99,7 @@ export class PostFormComponent implements OnInit {
     await uploadSnap.ref.getDownloadURL()
       .then(
         (uploadedImageUrl: string) => {
-          this.form.value.imageUrl = uploadedImageUrl;
+          this.form.value.imageUrl = this.updatedImageUrl = uploadedImageUrl;
           this.snackBarService.open('Successfully uploaded!', 'OK', 'SUCCESS');
         })
       .catch(
@@ -112,7 +113,7 @@ export class PostFormComponent implements OnInit {
     if (this.selectFileEventTarget.files && this.selectFileEventTarget.files[0]) {
       const file = this.selectFileEventTarget.files[0];
       const reader = new FileReader();
-      reader.onload = () => this.imageUrl = reader.result;
+      reader.onload = () => this.parsedImage = reader.result;
       reader.readAsDataURL(file);
     }
   }
