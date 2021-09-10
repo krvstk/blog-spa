@@ -1,10 +1,45 @@
-<div class="navbar" fxLayout="row" fxLayoutAlign="space-around none">
-  <span routerLink="/">Home</span>
-  <span routerLink="/blog">Blog</span>
-  <span routerLink="/contact">Contact</span>
-  <span routerLink="/about">About</span>
-  <span routerLink="/auth">Auth</span>
-</div>
-<div class="router-content">
-  <router-outlet></router-outlet>
+<div class="navbar-wrapper">
+  <nav class="navbar"
+       fxLayout="row"
+       fxLayout.xs="column"
+       fxLayoutAlign="space-between"
+       fxLayoutAlign.xs="space-between center">
+
+    <div class="home-phone-screen"
+         fxFill
+         fxFlex.gt-xs="nogrow"
+         fxLayout.xs="row"
+         fxLayoutAlign.xs="space-between center">
+      <span routerLink="/"
+            fxFlex="25"
+            fxFlexOffset="5"
+            (click)="showBurger = true">blyzniuk.dev</span>
+
+      <div *ngIf="isPhoneScreen">
+        <mat-icon class="mat-icon-menu"
+                  *ngIf="showBurger; else closeIcon"
+                  (click)="toggleMenu()">menu
+        </mat-icon>
+        <ng-template #closeIcon>
+          <mat-icon class="mat-icon-menu" (click)="toggleMenu()">close</mat-icon>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="other-menu"
+         *ngIf="!isPhoneScreen || !showBurger"
+         (click)="showBurger = true"
+         fxLayout="row"
+         fxLayout.xs="column">
+      <span routerLink="/blog">BLOG</span>
+      <span routerLink="/contact">CONTACT</span>
+      <span routerLink="/about">ABOUT</span>
+    </div>
+
+  </nav>
+
+  <div class="router-content">
+    <router-outlet></router-outlet>
+  </div>
+
 </div>
