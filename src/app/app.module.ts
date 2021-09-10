@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { FlexModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ import { PagenotfoundComponent } from '@core/components/pagenotfound/pagenotfoun
 
     AngularFireModule.initializeApp(environment.firebase),
     FlexModule,
+    MatIconModule,
 
     AppRoutingModule,
     AuthModule,
