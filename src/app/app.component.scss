@@ -1,24 +1,42 @@
-header {
-  background-color: #007bab;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+.app-wrapper {
+  position: relative;
+  min-height: 100%;
 
-  span {
-    text-decoration: none;
-    padding: 25px;
-    font-size: 20px;
+  header {
+    background-color: #007bab;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    span {
+      text-decoration: none;
+      padding: 25px;
+      font-size: 20px;
+    }
+
+    :hover span {
+      cursor: pointer;
+    }
+
+    .mat-icon-menu {
+      padding: 25px;
+    }
   }
 
-  :hover span {
-    cursor: pointer;
+  section {
+    padding: 10px 0 70px;
   }
 
-  .mat-icon-menu {
-    padding: 25px;
-  }
-}
+  footer {
+    background: #007bab;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
 
-.router-content {
-  padding: 10px;
+    p {
+      margin: 0;
+    }
+  }
 }
