@@ -8,7 +8,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FlexModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { QuillModule } from 'ngx-quill';
 
@@ -41,7 +43,9 @@ import { environment } from '../../../environments/environment';
     AngularFirestoreModule,
     FlexModule,
     MatButtonModule,
+    MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     QuillModule.forRoot(),
 

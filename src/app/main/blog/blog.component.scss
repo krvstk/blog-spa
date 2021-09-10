@@ -1,0 +1,38 @@
+article {
+  .post-card {
+    min-width: 250px;
+    max-width: 800px;
+    margin: 25px;
+
+    .mat-card-title {
+      font-size: 30px;
+    }
+
+    .edited-subtitle {
+      font-size: 12px;
+    }
+
+    .mat-card-content {
+      font-size: 20px;
+    }
+
+    .tag {
+      padding: 3px;
+      background: cornflowerblue;
+      margin: 2px;
+      text-decoration: none;
+    }
+  }
+}
+
+.pagination {
+  padding: 20px;
+  background: aquamarine;
+
+  .mat-icon {
+    height: 45px;
+    width: 45px;
+    font-size: 45px;
+    line-height: 45px;
+  }
+}

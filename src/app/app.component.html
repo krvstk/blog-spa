@@ -1,9 +1,9 @@
-<div class="navbar-wrapper">
-  <nav class="navbar"
-       fxLayout="row"
-       fxLayout.xs="column"
-       fxLayoutAlign="space-between"
-       fxLayoutAlign.xs="space-between center">
+<div class="app-wrapper">
+  <header class="navbar"
+          fxLayout="row"
+          fxLayout.xs="column"
+          fxLayoutAlign="space-between"
+          fxLayoutAlign.xs="space-between center">
 
     <div class="home-phone-screen"
          fxFill
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="other-menu"
+    <div class="rest-menu"
          *ngIf="!isPhoneScreen || !showBurger"
          (click)="showBurger = true"
          fxLayout="row"
@@ -36,10 +36,13 @@
       <span routerLink="/about">ABOUT</span>
     </div>
 
-  </nav>
+  </header>
 
-  <div class="router-content">
+  <section
+    class="router-content"
+    fxLayout="column"
+    fxLayoutAlign="space-around center">
     <router-outlet></router-outlet>
-  </div>
+  </section>
 
 </div>
