@@ -57,7 +57,7 @@ export class PostComponent implements OnInit, OnDestroy {
           this.post = post;
         },
         (error) => {
-          console.log(error);
+          this.snackbarService.open(error, 'OK', 'FAIL');
         });
     this.authService.userSubject$
       .pipe(takeUntil(this.unsubscribe))

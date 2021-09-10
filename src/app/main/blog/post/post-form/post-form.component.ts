@@ -65,11 +65,12 @@ export class PostFormComponent implements OnInit {
     this.firestore.collection('posts').doc<Post>(this.form.value.url).set(this.form.value)
       .then(
         () => {
+          this.snackBarService.open(`Post ${this.form.value.title} created`, 'OK', 'SUCCESS');
           this.router.navigate(['/blog/post/' + this.form.value.url]);
         })
       .catch(
-        (error) => {
-          console.log(error);
+        (error: Error) => {
+          this.snackBarService.open(error.message, 'OK', 'FAIL');
         });
   }
 
@@ -81,12 +82,13 @@ export class PostFormComponent implements OnInit {
     this.firestore.doc<Post>('posts/' + this.post.url).update(changedValues)
       .then(
         () => {
+          this.snackBarService.open(`Post ${this.post.title} edited`, 'OK', 'SUCCESS');
           this.router.navigate(['/blog/post/' + this.form.value.url]);
         }
       )
       .catch(
-        (error) => {
-          console.log(error);
+        (error: Error) => {
+          this.snackBarService.open(error.message, 'OK', 'FAIL');
         }
       );
   }
