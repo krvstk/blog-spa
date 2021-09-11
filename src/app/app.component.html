@@ -45,6 +45,15 @@
     <router-outlet></router-outlet>
   </section>
 
+  <button
+    *ngIf="showUpButton"
+    class="scroll-top-button"
+    mat-fab
+    color="primary"
+    (click)="scrollTop()">
+    <mat-icon>north</mat-icon>
+  </button>
+
   <footer fxLayout="row"
           fxLayout.xs="column"
           fxLayoutAlign="space-evenly center"

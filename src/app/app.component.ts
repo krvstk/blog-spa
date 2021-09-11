@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -14,7 +14,9 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   isPhoneScreen: boolean;
-  showBurger = true;
+  showBurger: boolean = true;
+  topPosToStartShowing: number = 500;
+  showUpButton: boolean;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -45,5 +47,19 @@ export class AppComponent {
 
   toggleMenu(): void {
     this.showBurger = !this.showBurger;
+  }
+
+  @HostListener('window:scroll')
+  checkScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.showUpButton = scrollPosition >= this.topPosToStartShowing;
+  }
+
+  scrollTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }
