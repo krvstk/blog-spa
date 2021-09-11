@@ -6,6 +6,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ContactComponent } from './main/contact/contact.component';
 import { HomeComponent } from './main/home/home.component';
 import { PagenotfoundComponent } from '@core/components/pagenotfound/pagenotfound.component';
+import { PrivacyComponent } from './main/privacy/privacy.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'privacy',
+    component: PrivacyComponent
   },
   {
     path: '**', pathMatch: 'full',
