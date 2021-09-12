@@ -1,1 +1,79 @@
-<h1>Contact information</h1>
+<div class="contact-wrapper">
+
+  <div class="contact-page"
+       fxLayout="column"
+       fxLayoutAlign="space-evenly center"
+       fxLayout.xs="column"
+       fxLayoutGap="10px">
+
+    <h1>You may reach me via any social listed</h1>
+
+    <section class="socials"
+             fxLayout="row"
+             fxLayoutAlign="space-around center"
+             fxLayoutGap="5px">
+      <a href="https://t.me/blyz_niuk">
+        <img src="/assets/contact-icons/telegram-final.png"
+             title="Contact me in telegram"
+             alt="telegram-logo">
+      </a>
+      <a href="https://www.linkedin.com/in/yevhen-blyzniuk/">
+        <img src="/assets/contact-icons/linkedin-final.png"
+             title="Check my profile in LinkedIn"
+             alt="linkedin-logo">
+      </a>
+      <a href="https://join.skype.com/invite/aWngMakqwPWU">
+        <img src="/assets/contact-icons/skype-final.png"
+             title="Reach me on Skype"
+             alt="skype-logo">
+      </a>
+      <a href="mailto: krvstk@gmail.com">
+        <img src="/assets/contact-icons/gmail-final.png"
+             title="Send email to me"
+             alt="mail-logo">
+      </a>
+      <a href="https://github.com/krvstk">
+        <img src="/assets/contact-icons/github-final.png"
+             title="Watch my code at GitHub"
+             alt="github-logo">
+      </a>
+    </section>
+
+    <form [formGroup]="contactForm"
+          #formDirective="ngForm"
+          (ngSubmit)="onSubmit(formDirective)"
+          fxLayout="column">
+
+      <h1>... or fill the form and get feedback</h1>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input required matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="contactForm.value.name === ''">Name is required!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input required matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="contactForm.value.email === ''">Email is required and must be valid!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Subject</mat-label>
+        <input required matInput placeholder="Subject" formControlName="subject">
+        <mat-error *ngIf="contactForm.value.name === ''">Subject is required!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Your message</mat-label>
+        <textarea required matInput placeholder="Your message" formControlName="text"></textarea>
+        <mat-error *ngIf="contactForm.value.text === ''">Text is required!</mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary">Send</button>
+
+    </form>
+
+  </div>
+
+</div>
