@@ -1,0 +1,41 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
+.contact-wrapper {
+  padding: 20px;
+
+  .contact-page {
+    padding: 20px;
+    background: burlywood;
+
+    h1 {
+      text-align: center;
+    }
+
+    section {
+      padding: 40px;
+
+      @media (min-width: $medium) {
+        width: 35vw;
+      }
+
+      img {
+        max-height: 12vw;
+        max-width: 12vh;
+      }
+    }
+
+    form {
+      padding: 20px;
+      background: floralwhite;
+
+      .mat-form-field {
+        width: auto !important;
+
+        @media (min-width: $medium) {
+          width: 35vw;
+          min-width: 500px;
+        }
+      }
+    }
+  }
+}
