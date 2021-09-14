@@ -1,8 +1,8 @@
 <div class="app-wrapper">
-  <header class="navbar"
+  <header class="navbar mat-elevation-z8"
           fxLayout="row"
           fxLayout.xs="column"
-          fxLayoutAlign="space-between"
+          fxLayoutAlign="space-between center"
           fxLayoutAlign.xs="space-between center">
 
     <div class="home-phone-screen"
@@ -10,7 +10,8 @@
          fxFlex.gt-xs="nogrow"
          fxLayout.xs="row"
          fxLayoutAlign.xs="space-between center">
-      <span routerLink="/"
+      <span class="blyzniuk-dev"
+            routerLink="/"
             fxFlex="25"
             fxFlexOffset="5"
             (click)="showBurger = true">blyzniuk.dev</span>
@@ -31,9 +32,9 @@
          (click)="showBurger = true"
          fxLayout="row"
          fxLayout.xs="column">
-      <span routerLink="/blog">BLOG</span>
-      <span routerLink="/contact">CONTACT</span>
-      <span routerLink="/about">ABOUT</span>
+      <span routerLink="/blog">blog</span>
+      <span routerLink="/contact">contact</span>
+      <span routerLink="/about">about</span>
     </div>
 
   </header>
@@ -54,7 +55,8 @@
     <mat-icon>north</mat-icon>
   </button>
 
-  <footer fxLayout="row"
+  <footer class="mat-elevation-z8"
+          fxLayout="row"
           fxLayout.xs="column"
           fxLayoutAlign="space-evenly center"
           fxLayoutAlign.xs="space-evenly center">

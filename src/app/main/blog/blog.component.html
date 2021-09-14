@@ -1,10 +1,17 @@
 <app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 
-<button *ngIf="loggedUser" mat-raised-button color="primary" [routerLink]="'./post/create'">add post</button>
+<div class="button-wrapper" fxLayoutAlign="center">
+  <button *ngIf="loggedUser"
+          mat-raised-button
+          color="primary"
+          fxFlex="grow"
+          [routerLink]="'./post/create'">add post
+  </button>
+</div>
 
 <article *ngFor="let post of posts; let i = index" fxLayout="column" fxLayoutAlign="space-around stretch">
 
-  <mat-card class="post-card mat-elevation-z4">
+  <mat-card class="post-card mat-elevation-z8">
 
     <mat-card-header>
       <mat-card-title>
@@ -32,12 +39,12 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button fxFlex="grow" mat-flat-button color="primary" [routerLink]="'./post/' + post.url">READ</button>
+      <button fxFlex="grow" mat-raised-button color="primary" [routerLink]="'./post/' + post.url">READ</button>
     </mat-card-actions>
 
-    Tags: <span *ngFor="let tag of post.tags">
-          <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
-      </span>
+    <span *ngFor="let tag of post.tags">
+      <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+    </span>
 
   </mat-card>
 
@@ -45,7 +52,7 @@
 
 <br>
 
-<div class="pagination" fxLayout="row" fxLayoutAlign="space-around center">
+<div class="pagination" fxLayout="row" fxLayoutAlign="space-evenly center">
   <button
     mat-icon-button
     color="primary"

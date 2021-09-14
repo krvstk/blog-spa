@@ -1,3 +1,5 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
 article {
   .post-card {
     min-width: 250px;
@@ -5,34 +7,73 @@ article {
     margin: 25px;
 
     .mat-card-title {
-      font-size: 30px;
+      font-size: 45px;
+      font-family: 'CormorantInfant', serif;
+      font-weight: bold;
+      letter-spacing: -0.8px;
+      word-spacing: 0.7px;
+
+      a {
+        background-color: rgb(109, 174, 214, 0.3);
+        color: #2c2c69;
+
+        &:hover {
+          background-color: #2c2c69;
+          color: rgb(109, 174, 214, 1);
+        }
+      }
     }
 
-    .edited-subtitle {
-      font-size: 12px;
+    .mat-card-subtitle {
+      font-family: 'Merriweather', serif;
+      font-size: 20px;
+
+      &.edited-subtitle {
+        font-size: 15px;
+      }
     }
 
     .mat-card-content {
-      font-size: 20px;
+      font-size: 25px;
+      font-family: 'Merriweather', serif;
     }
 
     .tag {
-      padding: 3px;
-      background: cornflowerblue;
-      margin: 2px;
+      padding: 5px;
+      background-color: rgb(109, 174, 214, 0.3);
+      color: #2c2c69;
+      margin: 4px;
       text-decoration: none;
+      font-family: 'Cutive', serif;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #2c2c69;
+        color: rgb(109, 174, 214, 1);
+      }
+
+      @media (min-width: $small) {
+        font-size: 18px;
+        padding: 10px;
+        margin: 10px;
+      }
     }
   }
 }
 
 .pagination {
   padding: 20px;
-  background: aquamarine;
+  font-family: 'Merriweather', serif;
+  font-size: 40px;
 
   .mat-icon {
-    height: 45px;
-    width: 45px;
-    font-size: 45px;
-    line-height: 45px;
+    height: 40px;
+    width: 40px;
+    font-size: 60px;
+    line-height: 40px;
+
+    @media (min-width: $small) {
+      font-size: 80px;
+    }
   }
 }
