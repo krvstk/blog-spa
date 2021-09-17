@@ -1,19 +1,47 @@
 <app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
-<div *ngIf="post">
-  <div *ngIf="loggedUser">
-    <button mat-raised-button color="accent" (click)="onEditPost()">edit post</button>
-    <button mat-raised-button color="accent" (click)="onDeletePost(post.title)">delete post</button>
-  </div>
-  <p>Post:</p>
-  <p>Author: {{ post.author }}</p>
-  <img [src]=post.imageUrl alt="thumbnail" (load)="isLoading = false" (error)="isLoading = false">
-  <p>Title: {{ post.title }}</p>
-  <quill-view-html [content]="post.content" format="text" theme="snow"></quill-view-html>
-  <p>Created: {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}</p>
-  <p *ngIf="post.dateEdited">Edited: {{ post.dateEdited.toDate() | date:'d MMMM yyyy' }}</p>
-  <p>Tags:
-    <span *ngFor="let tag of post.tags">
-      <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
-  </span>
-  </p>
-</div>
+
+<article *ngIf="post">
+
+  <mat-card class="post-card mat-elevation-z8">
+
+    <mat-card-header>
+      <mat-card-title>
+        {{ post.title }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}
+      </mat-card-subtitle>
+      <mat-card-subtitle *ngIf="post.dateEdited" class="edited-subtitle">
+        Edited on {{ post.dateEdited.toDate() | date:'d MMMM yyyy' }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <div class="author-wrapper">
+      <span>by {{ post.author }}</span>
+    </div>
+
+    <div class="img-wrapper" fxLayoutAlign="center">
+      <img
+        mat-card-image
+        [src]="post.imageUrl"
+        alt="thumbnail"
+        (load)="isLoading = false"
+        (error)="isLoading = false">
+    </div>
+
+    <quill-view-html [content]="post.content" format="text" theme="snow"></quill-view-html>
+
+    <div class="tags-content">
+            <span *ngFor="let tag of post.tags">
+              <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+            </span>
+    </div>
+
+    <div class="button-wrapper" fxLayoutAlign="center" fxLayoutGap="10px">
+      <button fxFlex="25" mat-flat-button color="accent" (click)="onEditPost()">Edit</button>
+      <button fxFlex="25" mat-flat-button color="accent" (click)="onDeletePost(post.title)">Delete</button>
+    </div>
+
+  </mat-card>
+
+</article>

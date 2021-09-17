@@ -1,0 +1,133 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
+article {
+  padding: 10px;
+
+  .post-card {
+    min-width: 250px;
+    max-width: 1000px;
+    background: ghostwhite;
+    border-radius: 0;
+
+    img {
+      max-width: 800px;
+      padding: 10px;
+    }
+
+    .author-wrapper {
+      text-align: right;
+      font-size: 20px;
+      font-family: 'CormorantInfant', serif;
+      padding-bottom: 10px;
+
+      span {
+        margin: 0;
+        background-color: #2c2c69;
+        color: rgb(109, 174, 214, 1);
+      }
+    }
+
+    .mat-card-title {
+      font-size: 40px;
+      font-family: 'CormorantInfant', serif;
+      font-weight: bold;
+      letter-spacing: -0.8px;
+      word-spacing: 0.7px;
+      background-color: rgb(109, 174, 214, 0.3);
+      color: #2c2c69;
+
+      @media (min-width: $small) {
+        font-size: 60px;
+      }
+
+      a {
+        //background-color: rgb(109, 174, 214, 0.3);
+        //color: #2c2c69;
+
+        &:hover {
+          //background-color: #2c2c69;
+          //color: rgb(109, 174, 214, 1);
+        }
+      }
+    }
+
+    .mat-card-subtitle {
+      font-family: 'Merriweather', serif;
+      font-size: 17px;
+      margin: 5px;
+
+      &.edited-subtitle {
+        font-size: 15px;
+        margin: 0;
+      }
+    }
+
+    @media (min-width: $small) {
+      .mat-card-subtitle {
+        font-size: 20px;
+      }
+    }
+
+    // quill-editor's dynamic class with innerHTML
+    .ql-editor {
+      padding: 10px;
+      font-size: 16px;
+      font-family: 'Merriweather', serif;
+
+      ul {
+        padding-left: 5px;
+
+        li {
+          padding: 0 5px;
+        }
+      }
+
+      @media (min-width: $small) {
+        font-size: 18px;
+
+        ul {
+          padding-left: 25px;
+
+          li {
+            padding: 0 25px;
+          }
+        }
+      }
+    }
+
+    .tags-content {
+      padding: 10px;
+      overflow: hidden;
+      line-height: 30px;
+      overflow-wrap: break-word;
+
+      @media (min-width: $small) {
+        line-height: 50px;
+      }
+
+      span {
+        display: inline-block;
+
+        .tag {
+          padding: 5px;
+          background-color: rgb(109, 174, 214, 0.3);
+          color: #2c2c69;
+          margin: 4px;
+          text-decoration: none;
+          font-family: 'Cutive', serif;
+          font-size: 11px;
+
+          &:hover {
+            background-color: #2c2c69;
+            color: rgb(109, 174, 214, 1);
+          }
+
+          @media (min-width: $small) {
+            font-size: 18px;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}

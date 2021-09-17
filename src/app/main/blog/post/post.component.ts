@@ -1,5 +1,5 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
 import firebase from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -16,7 +16,8 @@ import { SnackBarService } from '@core/services/snack-bar.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: ['./post.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PostComponent implements OnInit, OnDestroy {
 
