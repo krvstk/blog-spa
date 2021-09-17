@@ -49,3 +49,8 @@ Thumbs.db
 
 # firebase
 /.firebase/
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules

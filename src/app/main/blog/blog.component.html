@@ -3,8 +3,7 @@
 <div class="button-wrapper" fxLayoutAlign="center">
   <button *ngIf="loggedUser"
           mat-raised-button
-          color="primary"
-          fxFlex="grow"
+          color="accent"
           [routerLink]="'./post/create'">add post
   </button>
 </div>
@@ -39,12 +38,14 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button fxFlex="grow" mat-raised-button color="primary" [routerLink]="'./post/' + post.url">READ</button>
+      <button fxFlex="grow" mat-flat-button color="primary" [routerLink]="'./post/' + post.url">READ</button>
     </mat-card-actions>
 
-    <span *ngFor="let tag of post.tags">
-      <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
-    </span>
+    <div class="tags-content">
+            <span *ngFor="let tag of post.tags">
+              <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+            </span>
+    </div>
 
   </mat-card>
 

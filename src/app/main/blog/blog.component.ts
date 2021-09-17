@@ -28,7 +28,6 @@ export class BlogComponent implements OnInit, OnDestroy {
   pageSize: number = 10;
   posts: Post[] = [];
   private unsubscribe: Subject<any>;
-  subscription: Subscription;
 
   constructor(
     private firestore: AngularFirestore,
@@ -75,7 +74,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   onNextPage(): void {
     this.isLoading = true;
-    this.subscription = this.firestore.collection<Post>
+    this.firestore.collection<Post>
     ('posts', ref => ref
       .orderBy('dateCreated', 'desc')
       .startAfter(this.lastSnapshot)
@@ -102,7 +101,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   onPreviousPage(): void {
     this.isLoading = true;
     this.nextPageButtonDisabled = false;
-    this.subscription = this.firestore.collection<Post>
+    this.firestore.collection<Post>
     ('posts', ref => ref
       .orderBy('dateCreated', 'desc')
       .startAt(this.firstSnapshotsPerPage.get(this.pageNumber - 1))
