@@ -1,4 +1,10 @@
-h1 {
-  text-align: center;
-  padding: 30px;
+.privacy-wrapper {
+  padding: 20px;
+  font-family: 'Cutive', serif;
+  max-width: 950px;
+
+  .privacy-content {
+    background: ghostwhite;
+    padding: 20px;
+  }
 }

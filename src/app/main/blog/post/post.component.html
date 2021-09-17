@@ -1,8 +1,8 @@
 <app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 <div *ngIf="post">
   <div *ngIf="loggedUser">
-    <button mat-raised-button color="primary" (click)="onEditPost()">edit post</button>
-    <button mat-raised-button color="primary" (click)="onDeletePost(post.title)">delete post</button>
+    <button mat-raised-button color="accent" (click)="onEditPost()">edit post</button>
+    <button mat-raised-button color="accent" (click)="onDeletePost(post.title)">delete post</button>
   </div>
   <p>Post:</p>
   <p>Author: {{ post.author }}</p>

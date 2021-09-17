@@ -2,34 +2,50 @@
 
 .contact-wrapper {
   padding: 20px;
+  font-family: 'Cutive', serif;
 
   .contact-page {
     padding: 20px;
-    background: burlywood;
+    background: ghostwhite;
+
+    @media (min-width: $small) {
+      padding: 30px;
+    }
 
     h1 {
       text-align: center;
     }
 
     section {
-      padding: 40px;
+      padding: 10px;
 
       @media (min-width: $small) {
         width: 35vw;
       }
 
       img {
-        max-height: 12vw;
-        max-width: 12vh;
+        max-height: 13vw;
+        max-width: 13vh;
+
+        @media (min-width: $medium) {
+          max-height: 10vw;
+          max-width: 10vh;
+        }
       }
     }
 
     form {
-      padding: 20px;
-      background: floralwhite;
+      padding: 10px;
+      background-color: rgb(109, 174, 214, 0.3);
+      width: 100%;
+
+      @media (min-width: $medium) {
+        padding: 30px;
+      }
 
       .mat-form-field {
         width: auto !important;
+        min-width: 200px;
 
         @media (min-width: $small) {
           width: 35vw;

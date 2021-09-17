@@ -40,6 +40,7 @@
   <button
     *ngIf="selectFileEventTarget"
     (click)="uploadDescriptionImage()"
+    color="warn"
     mat-raised-button>Upload image
   </button>
 
@@ -48,12 +49,14 @@
 <button
   mat-raised-button
   type="submit"
+  color="accent"
   [disabled]="form.invalid"
   *ngIf="!post.url; else editPostButton"
   (click)="createPost()">Create post
 </button>
 <ng-template #editPostButton>
   <button mat-raised-button
+          color="accent"
           (click)="editPost()"
           [disabled]="form.invalid || form.pristine">Edit post
   </button>

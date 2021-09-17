@@ -17,6 +17,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   email: string;
   password: string;
   loggedUser: firebase.User;
+  showLoginForm: boolean = true;
   private unsubscribe: Subject<any>;
 
   constructor(
@@ -53,6 +54,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       .then(
         () => {
           this.loggedUser = this.authService.user;
+          this.showLoginForm = false;
         });
   }
 
@@ -61,6 +63,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       .then(
         () => {
           this.loggedUser = null;
+          this.showLoginForm = true;
         });
   }
 }
