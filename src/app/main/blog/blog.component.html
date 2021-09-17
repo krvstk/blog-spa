@@ -4,7 +4,8 @@
   <button *ngIf="loggedUser"
           mat-raised-button
           color="accent"
-          [routerLink]="'./post/create'">add post
+          fxFlex="25"
+          [routerLink]="'./post/create'">Create
   </button>
 </div>
 
@@ -42,9 +43,9 @@
     </mat-card-actions>
 
     <div class="tags-content">
-            <span *ngFor="let tag of post.tags">
-              <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
-            </span>
+      <span *ngFor="let tag of post.tags">
+        <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+      </span>
     </div>
 
   </mat-card>
