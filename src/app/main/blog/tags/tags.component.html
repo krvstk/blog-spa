@@ -40,7 +40,7 @@
 
           <div class="tags-content">
             <span *ngFor="let tag of post.tags">
-              <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+              <a class="tag" (click)="findPostsByTag(tag)">{{ tag }}</a>
             </span>
           </div>
 
