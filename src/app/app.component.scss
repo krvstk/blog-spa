@@ -19,9 +19,20 @@
       font-size: 25px;
       padding: 40px;
 
-      @-moz-document url-prefix() {
-        background-color: transparent !important;
-        padding: 0;
+      .blyzniuk-dev-heading {
+        @-moz-document url-prefix() {
+          background-color: transparent !important;
+          padding: 0;
+        }
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
 
@@ -45,6 +56,11 @@
         background-color: transparent !important;
         padding: 0;
       }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
     }
 
     &:hover {
@@ -101,6 +117,7 @@ footer {
 
     a {
       text-decoration: none;
+      color: #2c2c69
     }
   }
 }
