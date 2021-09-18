@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -11,12 +12,26 @@ import { AuthService } from './auth/auth.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('scrollPosition', [
+      state('on', style({
+        backgroundColor: '#becee5'
+      })),
+      state('off', style({
+        background: 'transparent'
+      })),
+      transition('on => off', animate('500ms ease-out')),
+      transition('off => on', animate('500ms ease-in'))
+    ])
+  ]
 })
+
 export class AppComponent {
   isPhoneScreen: boolean;
   showBurger: boolean = true;
   topPosToStartShowing: number = 500;
-  showUpButton: boolean;
+  showUpButton: boolean = false;
+  scrollPosition: number = 0;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -51,8 +66,8 @@ export class AppComponent {
 
   @HostListener('window:scroll')
   checkScroll() {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.showUpButton = scrollPosition >= this.topPosToStartShowing;
+    this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.showUpButton = this.scrollPosition >= this.topPosToStartShowing;
   }
 
   scrollTop() {

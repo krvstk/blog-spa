@@ -21,8 +21,8 @@ article {
       }
 
       a {
-        background-color: rgb(109, 174, 214, 0.3);
         color: #2c2c69;
+        background-color: rgba(109, 174, 214, 0.3);
 
         &:hover {
           background-color: #2c2c69;
@@ -44,6 +44,10 @@ article {
       .mat-card-subtitle {
         font-size: 20px;
       }
+    }
+
+    img {
+      padding: 0;
     }
 
     .mat-card-content {

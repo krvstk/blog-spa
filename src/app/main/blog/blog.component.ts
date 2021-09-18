@@ -23,7 +23,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   isLoading: boolean;
   lastSnapshot: QueryDocumentSnapshot<Post>;
   loggedUser: firebase.User;
-  nextPageButtonDisabled = false;
+  nextPageButtonDisabled: boolean = false;
   pageNumber: number = 1;
   pageSize: number = 10;
   posts: Post[] = [];
