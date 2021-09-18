@@ -55,19 +55,17 @@
 <br>
 
 <div class="pagination" fxLayout="row" fxLayoutAlign="space-evenly center">
-  <button
-    mat-icon-button
-    color="primary"
-    [disabled]="pageNumber === 1"
-    (click)="onPreviousPage()">
+  <button mat-icon-button
+          color="primary"
+          [disabled]="pageNumber === 1"
+          (click)="onPreviousPage()">
     <mat-icon>arrow_back</mat-icon>
   </button>
   Page {{ pageNumber }}
-  <button
-    mat-icon-button
-    color="primary"
-    (click)="onNextPage()"
-    [disabled]="nextPageButtonDisabled || posts.length < pageSize">
+  <button mat-icon-button
+          color="primary"
+          (click)="onNextPage()"
+          [disabled]="nextPageButtonDisabled || posts.length < pageSize">
     <mat-icon>arrow_forward</mat-icon>
   </button>
 </div>

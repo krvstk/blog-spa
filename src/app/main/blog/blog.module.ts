@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { QuillModule } from 'ngx-quill';
 
 import { BlogComponent } from './blog.component';
@@ -47,6 +48,7 @@ import { environment } from '../../../environments/environment';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatTooltipModule,
     QuillModule.forRoot(),
 
     BlogRoutingModule,
