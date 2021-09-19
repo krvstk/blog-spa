@@ -39,9 +39,13 @@ const routes: Routes = [
     data: {title: 'Privacy'}
   },
   {
-    path: '**', pathMatch: 'full',
+    path: '404',
     component: PagenotfoundComponent,
     data: {title: 'Not Found'}
+  },
+  {
+    path: '**', pathMatch: 'full',
+    redirectTo: '/404',
   },
 ];
 

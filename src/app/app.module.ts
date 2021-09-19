@@ -7,14 +7,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { environment } from '../environments/environment';
-import { PagenotfoundComponent } from '@core/components/pagenotfound/pagenotfound.component';
 import { LayoutModule } from './layout/layout.module';
+import { PagenotfoundModule } from '@core/components/pagenotfound/pagenotfound.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +23,7 @@ import { LayoutModule } from './layout/layout.module';
     AppRoutingModule,
     AuthModule,
     LayoutModule,
+    PagenotfoundModule,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

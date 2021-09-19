@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
@@ -37,6 +38,7 @@ import { environment } from '../../../environments/environment';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
 
     AngularFireAnalyticsModule,

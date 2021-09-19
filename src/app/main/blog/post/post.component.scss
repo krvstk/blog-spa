@@ -39,16 +39,6 @@ article {
       @media (min-width: $small) {
         font-size: 60px;
       }
-
-      a {
-        //background-color: rgb(109, 174, 214, 0.3);
-        //color: #2c2c69;
-
-        &:hover {
-          //background-color: #2c2c69;
-          //color: rgb(109, 174, 214, 1);
-        }
-      }
     }
 
     .mat-card-subtitle {
