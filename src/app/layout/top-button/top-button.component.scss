@@ -1,0 +1,13 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
+.scroll-top-button {
+  position: fixed;
+  bottom: 45px;
+  right: 20px;
+  z-index: 9;
+
+  @media (min-width: $small) {
+    bottom: 10%;
+    right: 5%;
+  }
+}

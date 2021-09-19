@@ -40,8 +40,6 @@ export class TagsComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.tag = params.tag;
-          let baseTitle = this.titleService.getTitle();
-          this.titleService.setTitle(baseTitle + " | Tag: " + this.tag);
         }
       );
     this.findPostsByTag(this.tag);
@@ -57,6 +55,7 @@ export class TagsComponent implements OnInit {
   // -----------------------------------------------------------------------------------------------------
 
   findPostsByTag(tag): void {
+    this.titleService.setTitle('blyzniuk.dev | Tag: ' + tag);
     this.isLoading = true;
     this.tag = tag;
     this.location.replaceState('/blog/tag/' + tag);

@@ -31,8 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    component: ContactComponent,
-    data: {title: 'Contact'}
+    loadChildren: () => import('./main/contact/contact.module').then(m => m.ContactModule)
   },
   {
     path: 'privacy',
