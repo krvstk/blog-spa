@@ -37,7 +37,7 @@
             </span>
     </div>
 
-    <div class="button-wrapper" fxLayoutAlign="center" fxLayoutGap="10px">
+    <div *ngIf="loggedUser" class="button-wrapper" fxLayoutAlign="center" fxLayoutGap="10px">
       <button fxFlex="25" mat-flat-button color="accent" (click)="onEditPost()">Edit</button>
       <button fxFlex="25" mat-flat-button color="accent" (click)="onDeletePost(post.title)">Delete</button>
     </div>

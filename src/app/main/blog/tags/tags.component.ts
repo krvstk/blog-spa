@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Post } from '../post/post.model';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class TagsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private firestore: AngularFirestore,
     private location: Location,
+    private titleService: Title,
   ) {
     this.unsubscribe = new Subject();
   }
@@ -38,6 +40,8 @@ export class TagsComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.tag = params.tag;
+          let baseTitle = this.titleService.getTitle();
+          this.titleService.setTitle(baseTitle + " | Tag: " + this.tag);
         }
       );
     this.findPostsByTag(this.tag);

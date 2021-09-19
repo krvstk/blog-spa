@@ -11,6 +11,7 @@ import { AuthService } from '../../../auth/auth.service';
 import { ConfirmDialogueComponent } from '@core/components/confirm-dialogue/confirm-dialogue.component';
 import { Post } from './post.model';
 import { SnackBarService } from '@core/services/snack-bar.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -32,8 +33,9 @@ export class PostComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private firestore: AngularFirestore,
     private router: Router,
+    private snackbarService: SnackBarService,
+    private titleService: Title,
     public matDialog: MatDialog,
-    private snackbarService: SnackBarService
   ) {
     this.unsubscribe = new Subject();
   }
@@ -56,6 +58,8 @@ export class PostComponent implements OnInit, OnDestroy {
       .subscribe(
         (post: Post) => {
           this.post = post;
+          let baseTitle = this.titleService.getTitle();
+          this.titleService.setTitle(baseTitle + " | " + this.post.title);
         },
         (error) => {
           this.snackbarService.open(error, 'OK', 'FAIL');
