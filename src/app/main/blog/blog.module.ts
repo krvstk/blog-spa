@@ -7,13 +7,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FlexModule } from '@angular/flex-layout';
+import { QuillModule } from 'ngx-quill';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { QuillModule } from 'ngx-quill';
 
 import { BlogComponent } from './blog.component';
 import { BlogRoutingModule } from './blog-routing.module';

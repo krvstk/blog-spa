@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import firebase from 'firebase';
 import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
 import { QueryDocumentSnapshot } from '@angular/fire/firestore/interfaces';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
 import { AuthService } from '../../auth/auth.service';

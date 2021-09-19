@@ -1,6 +1,5 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Title } from '@angular/platform-browser';
 
@@ -15,23 +14,10 @@ import { AuthService } from './auth/auth.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [
-    trigger('scrollPosition', [
-      state('on', style({
-        backgroundColor: '#becee5'
-      })),
-      state('off', style({
-        background: 'transparent'
-      })),
-      transition('on => off', animate('500ms ease-out')),
-      transition('off => on', animate('500ms ease-in'))
-    ])
-  ]
 })
 
 export class AppComponent {
   isPhoneScreen: boolean;
-  showBurger: boolean = true;
   topPosToStartShowing: number = 500;
   showUpButton: boolean = false;
   scrollPosition: number = 0;
@@ -86,21 +72,13 @@ export class AppComponent {
       });
   }
 
-  toggleMenu(): void {
-    this.showBurger = !this.showBurger;
-  }
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
 
   @HostListener('window:scroll')
   checkScroll() {
     this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     this.showUpButton = this.scrollPosition >= this.topPosToStartShowing;
-  }
-
-  scrollTop() {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
   }
 }
