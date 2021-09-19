@@ -57,11 +57,16 @@ export class PostComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (post: Post) => {
-          this.post = post;
-          let baseTitle = this.titleService.getTitle();
-          this.titleService.setTitle(baseTitle + " | " + this.post.title);
+          if (!post) {
+            this.router.navigate(['/404']);
+          } else {
+            this.post = post;
+            let baseTitle = this.titleService.getTitle();
+            this.titleService.setTitle(baseTitle + ' | ' + this.post.title);
+          }
         },
         (error) => {
+          this.isLoading = false;
           this.snackbarService.open(error, 'OK', 'FAIL');
         });
     this.authService.userSubject$
