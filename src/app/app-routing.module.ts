@@ -12,15 +12,18 @@ import { PrivacyComponent } from './main/privacy/privacy.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    data: {title: 'Web Developer'}
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutComponent,
+    data: {title: 'About'}
   },
   {
     path: 'auth',
     component: AuthComponent,
+    data: {title: 'Authentication'}
   },
   {
     path: 'blog',
@@ -28,15 +31,18 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    component: ContactComponent
+    component: ContactComponent,
+    data: {title: 'Contact'}
   },
   {
     path: 'privacy',
-    component: PrivacyComponent
+    component: PrivacyComponent,
+    data: {title: 'Privacy'}
   },
   {
     path: '**', pathMatch: 'full',
-    component: PagenotfoundComponent
+    component: PagenotfoundComponent,
+    data: {title: 'Not Found'}
   },
 ];
 

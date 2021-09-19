@@ -1,9 +1,12 @@
 import { Component, HostListener } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Title } from '@angular/platform-browser';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 import { AuthService } from './auth/auth.service';
 
@@ -34,8 +37,11 @@ export class AppComponent {
   scrollPosition: number = 0;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private angularFireAuth: AngularFireAuth,
     private authService: AuthService,
+    private router: Router,
+    private titleService: Title,
     public breakpointObserver: BreakpointObserver,
   ) {
   }
@@ -45,6 +51,26 @@ export class AppComponent {
   // -----------------------------------------------------------------------------------------------------
 
   ngOnInit(): void {
+    let baseTitle = this.titleService.getTitle();
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => {
+          let route = this.activatedRoute;
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter((route: any) => route.outlet === "primary"),
+        mergeMap((route: any) => route.data),
+        map((data: any) => {
+          if (data.title) {
+            return " | " + data.title;
+          } else {
+            return "";
+          }
+        })
+      )
+      .subscribe(pathString => this.titleService.setTitle(baseTitle + pathString));
     this.angularFireAuth.onAuthStateChanged(
       (user: firebase.User) => {
         if (user) {
