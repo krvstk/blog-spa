@@ -25,12 +25,14 @@
       </mat-card-subtitle>
     </mat-card-header>
 
-    <img
-      mat-card-image
-      [src]="post.imageUrl"
-      alt="thumbnail"
-      (load)="isLoading = false"
-      (error)="isLoading = false">
+    <div class="img-wrapper" fxLayoutAlign="center">
+      <img
+        mat-card-image
+        [src]="post.imageUrl"
+        alt="thumbnail"
+        (load)="isLoading = false"
+        (error)="isLoading = false">
+    </div>
 
     <mat-card-content>
       <p>

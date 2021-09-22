@@ -8,12 +8,25 @@ import firebase from 'firebase';
 import { filter, map, mergeMap } from 'rxjs/operators';
 
 import { AuthService } from './auth/auth.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('scrollPosition', [
+      state('on', style({
+        backgroundColor: '#becee5'
+      })),
+      state('off', style({
+        background: 'transparent'
+      })),
+      transition('on => off', animate('500ms ease-out')),
+      transition('off => on', animate('500ms ease-in'))
+    ])
+  ]
 })
 
 export class AppComponent {
@@ -21,6 +34,7 @@ export class AppComponent {
   topPosToStartShowing: number = 500;
   showUpButton: boolean = false;
   scrollPosition: number = 0;
+  showBurger: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -80,5 +94,9 @@ export class AppComponent {
   checkScroll() {
     this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     this.showUpButton = this.scrollPosition >= this.topPosToStartShowing;
+  }
+
+  toggleMenu(): void {
+    this.showBurger = !this.showBurger;
   }
 }

@@ -55,7 +55,7 @@ export class TagsComponent implements OnInit {
   // -----------------------------------------------------------------------------------------------------
 
   findPostsByTag(tag): void {
-    this.titleService.setTitle('blyzniuk.dev | Tag: ' + tag);
+    this.titleService.setTitle('blyzniuk.dev | tag: ' + tag);
     this.isLoading = true;
     this.tag = tag;
     this.location.replaceState('/blog/tag/' + tag);

@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { environment } from '../environments/environment';
 import { LayoutModule } from './layout/layout.module';
 import { PagenotfoundModule } from '@core/components/pagenotfound/pagenotfound.module';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -19,6 +21,9 @@ import { PagenotfoundModule } from '@core/components/pagenotfound/pagenotfound.m
     BrowserModule,
 
     AngularFireModule.initializeApp(environment.firebase),
+
+    FlexModule,
+    MatIconModule,
 
     AppRoutingModule,
     AuthModule,
