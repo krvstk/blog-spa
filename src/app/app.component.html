@@ -1,6 +1,57 @@
 <div class="app-wrapper">
 
-  <app-header [isPhoneScreen]="isPhoneScreen" [scrollPosition]="scrollPosition"></app-header>
+  <header class="navbar mat-elevation-z8"
+          fxLayout="row"
+          fxLayout.xs="column"
+          fxLayoutAlign="space-between center">
+
+    <div class="home-phone-screen"
+         fxFill
+         fxFlex.gt-xs="nogrow"
+         fxLayout.xs="row"
+         fxLayoutAlign.xs="space-between center">
+      <span class="blyzniuk-dev-wrapper"
+            routerLink="/"
+            fxFlex="25"
+            fxFlexOffset="5"
+            (click)="showBurger = true">
+        <span [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'"
+              class="blyzniuk-dev-heading">blyzniuk.dev</span>
+      </span>
+
+      <div *ngIf="isPhoneScreen" class="mobile-menu-icons">
+        <mat-icon class="mat-icon-menu"
+                  *ngIf="showBurger; else closeIcon"
+                  (click)="toggleMenu()"
+                  [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'">menu
+        </mat-icon>
+        <ng-template #closeIcon>
+          <mat-icon class="mat-icon-menu" (click)="toggleMenu()"
+                    [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'">close</mat-icon>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="rest-menu"
+         *ngIf="!isPhoneScreen || !showBurger"
+         (click)="showBurger = true"
+         fxLayout="row"
+         fxLayout.xs="column">
+      <span class="menu-router-link" routerLink="/blog">
+        <span [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'"
+              class="router-link-word">blog</span>
+      </span>
+      <span class="menu-router-link" routerLink="/contact">
+        <span [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'"
+              class="router-link-word">contact</span>
+      </span>
+      <span class="menu-router-link" routerLink="/about">
+        <span [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'"
+              class="router-link-word">about</span>
+      </span>
+    </div>
+
+  </header>
 
   <app-content-section></app-content-section>
 

@@ -35,19 +35,17 @@ article {
       font-family: 'Merriweather', serif;
       font-size: 17px;
 
+      @media (min-width: $small) {
+        font-size: 20px;
+      }
+
       &.edited-subtitle {
         font-size: 15px;
       }
     }
 
-    @media (min-width: $small) {
-      .mat-card-subtitle {
-        font-size: 20px;
-      }
-    }
-
-    img {
-      padding: 0;
+    .img-wrapper img {
+      padding: 5px;
     }
 
     .mat-card-content {
@@ -74,7 +72,7 @@ article {
 
         .tag {
           padding: 5px;
-          background-color: rgb(109, 174, 214, 0.3);
+          background-color: rgba(109, 174, 214, 0.3);
           color: #2c2c69;
           margin: 4px;
           text-decoration: none;
@@ -101,14 +99,19 @@ article {
   font-family: 'Merriweather', serif;
   font-size: 25px;
 
-  .mat-icon {
-    height: 25px;
-    width: 25px;
-    font-size: 40px;
-    line-height: 20px;
+  button {
+    display: flex;
+    justify-content: center;
 
-    @media (min-width: $small) {
-      font-size: 80px;
+    .mat-icon {
+      height: 25px;
+      width: 25px;
+      font-size: 40px;
+      line-height: 20px;
+
+      @media (min-width: $small) {
+        font-size: 70px;
+      }
     }
   }
 }

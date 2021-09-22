@@ -21,13 +21,13 @@ const routes: Routes = [
   {
     path: '',
     component: BlogComponent,
-    data: {title: 'Blog'}
+    data: {title: 'blog'}
   },
   {
     path: 'post/create',
     component: PostFormComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'Create Post' }
+    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'create post' }
   },
   {
     path: 'post/:postUrl',
@@ -37,7 +37,7 @@ const routes: Routes = [
     path: 'post/:postUrl/edit',
     component: PostFormComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'Edit Post'  }
+    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'edit post'  }
   },
   {
     path: 'tag/:tag',

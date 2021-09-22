@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: '',
     component: ContactComponent,
-    data: {title: 'Contact'}
+    data: {title: 'contact'}
   },
 ];
 

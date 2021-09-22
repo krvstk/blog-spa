@@ -13,17 +13,17 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    data: {title: 'Web Developer'}
+    data: {title: 'web developer'}
   },
   {
     path: 'about',
     component: AboutComponent,
-    data: {title: 'About'}
+    data: {title: 'about'}
   },
   {
     path: 'auth',
     component: AuthComponent,
-    data: {title: 'Authentication'}
+    data: {title: 'authentication'}
   },
   {
     path: 'blog',
@@ -36,12 +36,12 @@ const routes: Routes = [
   {
     path: 'privacy',
     component: PrivacyComponent,
-    data: {title: 'Privacy'}
+    data: {title: 'privacy'}
   },
   {
     path: '404',
     component: PagenotfoundComponent,
-    data: {title: 'Not Found'}
+    data: {title: '404'}
   },
   {
     path: '**', pathMatch: 'full',

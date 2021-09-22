@@ -11,19 +11,16 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ContentSectionComponent } from './content-section/content-section.component';
 import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
 import { TopButtonComponent } from './top-button/top-button.component';
 
 
 @NgModule({
   declarations: [
     ContentSectionComponent,
-    HeaderComponent,
     FooterComponent,
     TopButtonComponent,
   ],
   exports: [
-    HeaderComponent,
     ContentSectionComponent,
     TopButtonComponent,
     FooterComponent
