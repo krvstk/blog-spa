@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ContentSectionComponent } from './content-section/content-section.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopButtonComponent } from './top-button/top-button.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { TopButtonComponent } from './top-button/top-button.component';
     FlexModule,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule,
   ]
 })
 export class LayoutModule {
