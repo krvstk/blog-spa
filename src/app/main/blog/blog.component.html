@@ -63,7 +63,16 @@
           (click)="onPreviousPage()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  Page {{ pageNumber }}
+  <span>
+    Page {{ pageNumber }}
+    <mat-icon #tooltip="matTooltip"
+              matTooltipPosition="right"
+              (click)="tooltip.toggle()"
+              color="primary"
+              matTooltip="Grayed-out arrow means unavailability">
+      info
+    </mat-icon>
+  </span>
   <button mat-icon-button
           color="primary"
           (click)="onNextPage()"

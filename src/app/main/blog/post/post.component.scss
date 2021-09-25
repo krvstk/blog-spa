@@ -4,8 +4,7 @@ article {
   padding: 10px;
 
   .post-card {
-    min-width: 250px;
-    max-width: 1000px;
+    min-width: 80vw;
     background: ghostwhite;
     border-radius: 0;
 
@@ -33,11 +32,14 @@ article {
       font-weight: bold;
       letter-spacing: -0.8px;
       word-spacing: 0.7px;
-      background-color: rgb(109, 174, 214, 0.3);
-      color: #2c2c69;
 
       @media (min-width: $small) {
         font-size: 60px;
+      }
+
+      span {
+        background-color: rgba(109, 174, 214, 0.3);
+        color: #2c2c69;
       }
     }
 
@@ -48,13 +50,22 @@ article {
 
       &.edited-subtitle {
         font-size: 15px;
-        //margin: 0;
       }
     }
 
     @media (min-width: $small) {
       .mat-card-subtitle {
         font-size: 20px;
+      }
+    }
+
+    .img-wrapper {
+      padding: 10px;
+
+      img {
+        max-width: 100%;
+        width: auto;
+        height: auto !important;
       }
     }
 
