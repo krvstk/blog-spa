@@ -10,7 +10,7 @@ import {
 
 export const slider =
   trigger('routeAnimations', [
-    transition('* <=> isLeft', slideTo('left') ),
+    transition('* => isLeft', slideTo('left') ),
     transition('* => isRight', slideTo('right') ),
     transition('isRight => *', slideTo('left') ),
     transition('isLeft => *', slideTo('right') )
@@ -32,10 +32,10 @@ function slideTo(direction) {
     ]),
     group([
       query(':leave', [
-        animate('600ms ease', style({ [direction]: '100%'}))
+        animate('450ms 150ms ease-in', style({ [direction]: '100%'}))
       ], optional),
       query(':enter', [
-        animate('600ms ease', style({ [direction]: '0%'}))
+        animate('450ms 150ms ease-in', style({ [direction]: '0%'}))
       ], optional)
     ]),
     query(':leave', animateChild(), optional),
