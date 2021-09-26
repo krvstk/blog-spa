@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './main/about/about.component';
 import { AuthComponent } from './auth/auth.component';
-import { ContactComponent } from './main/contact/contact.component';
 import { HomeComponent } from './main/home/home.component';
 import { PagenotfoundComponent } from '@core/components/pagenotfound/pagenotfound.component';
 import { PrivacyComponent } from './main/privacy/privacy.component';
@@ -13,17 +12,17 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    data: {title: 'web developer'}
+    data: {title: 'web developer', animation: 'isLeft'}
   },
   {
     path: 'about',
     component: AboutComponent,
-    data: {title: 'about'}
+    data: {title: 'about', animation: 'isRight'}
   },
   {
     path: 'auth',
     component: AuthComponent,
-    data: {title: 'authentication'}
+    data: {title: 'authentication', animation: 'isLeft'}
   },
   {
     path: 'blog',
@@ -36,12 +35,12 @@ const routes: Routes = [
   {
     path: 'privacy',
     component: PrivacyComponent,
-    data: {title: 'privacy'}
+    data: {title: 'privacy', animation: 'isLeft'}
   },
   {
     path: '404',
     component: PagenotfoundComponent,
-    data: {title: '404'}
+    data: {title: '404', animation: 'isRight'}
   },
   {
     path: '**', pathMatch: 'full',

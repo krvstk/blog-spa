@@ -1,6 +1,7 @@
 <section
   class="router-content"
   fxLayout="column"
-  fxLayoutAlign="space-around center">
-  <router-outlet></router-outlet>
+  fxLayoutAlign="space-around center"
+  [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
 </section>

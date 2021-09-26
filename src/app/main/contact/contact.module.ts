@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: '',
     component: ContactComponent,
-    data: {title: 'contact'}
+    data: {title: 'contact', animation: 'isRight'}
   },
 ];
 

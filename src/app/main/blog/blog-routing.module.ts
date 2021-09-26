@@ -37,11 +37,12 @@ const routes: Routes = [
     path: 'post/:postUrl/edit',
     component: PostFormComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'edit post'  }
+    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'edit post' }
   },
   {
     path: 'tag/:tag',
     component: TagsComponent,
+    data: { animation: 'isRight'}
   },
 ];
 
