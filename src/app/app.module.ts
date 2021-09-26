@@ -11,11 +11,13 @@ import { LayoutModule } from './layout/layout.module';
 import { PagenotfoundModule } from '@core/components/pagenotfound/pagenotfound.module';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexModule } from '@angular/flex-layout';
+import { HomeComponent } from './main/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
