@@ -1,27 +1,40 @@
-# BlogSpa
+# :balloon: https://blyzniuk.dev
+## Personal website made from scratch
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
+This is Serverless Single Page Application powered by **Angular 12** and **Firebase Cloud Services**.
 
-## Development server
+## :boom: Purpose of creation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+I wanted to develop application, where I could use my knowledge and expand it. 
+Practicing front-end skills was also a goal. I have always been interested in whole process of development
+from idea to complete implementation.
 
-## Code scaffolding
+Moreover, from now I have additional channel of communication and place, where I can share my
+knowledge with other developers in blog posts.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## :fire: Further improvements
 
-## Build
+During development I have collected some technical debt and I am going to repay it soon.
+I tried to make it as scalable as possible using best practice, still it has room
+for improvements. I will write posts during those steps.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## :hammer: Technologies and concepts used
 
-## Running unit tests
+As was mentioned - primary framework used is **Angular** of the last version for now.
+It doesn't have back-end at all, all the processing is coming from **Firebase**. 
+I am using **Firestore**, **Authentication**, **Storage** and **Hosting** from there.
+Also:
+- RxJs
+- Angular Material
+- Scss
+- Quill Text Editor and ngx-loader
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Angular concepts
+- Reactive Forms
+- Routing
+- Animations 
+- Services
+- Reusable Components
+- Angular CLI
+- Lazy Loading 
+etc.
