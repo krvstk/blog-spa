@@ -1,0 +1,58 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
+.contact-wrapper {
+  padding: 20px;
+  font-family: 'Cutive', serif;
+  min-width: 80vw;
+
+  .contact-page {
+    padding: 20px;
+    background: ghostwhite;
+
+    @media (min-width: $small) {
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    section {
+      padding: 10px;
+
+      @media (min-width: $small) {
+        width: 35vw;
+      }
+
+      img {
+        max-height: 13vw;
+        max-width: 13vh;
+
+        @media (min-width: $medium) {
+          max-height: 10vw;
+          max-width: 10vh;
+        }
+      }
+    }
+
+    form {
+      padding: 10px;
+      background-color: rgb(109, 174, 214, 0.3);
+      width: 100%;
+
+      @media (min-width: $medium) {
+        padding: 30px;
+      }
+
+      .mat-form-field {
+        width: auto !important;
+        min-width: 200px;
+
+        @media (min-width: $small) {
+          width: 35vw;
+          min-width: 500px;
+        }
+      }
+    }
+  }
+}

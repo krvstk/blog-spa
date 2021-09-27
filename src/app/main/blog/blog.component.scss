@@ -1,0 +1,126 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
+article {
+  padding: 10px;
+
+  .post-card {
+    max-width: 80vw;
+    background: ghostwhite;
+    border-radius: 0;
+
+    .mat-card-title {
+      font-size: 25px;
+      font-family: 'CormorantInfant', serif;
+      font-weight: bold;
+      letter-spacing: -0.8px;
+      word-spacing: 0.7px;
+
+      @media (min-width: $small) {
+        font-size: 45px;
+      }
+
+      a {
+        color: #2c2c69;
+        background-color: rgba(109, 174, 214, 0.3);
+
+        &:hover {
+          background-color: #2c2c69;
+          color: rgb(109, 174, 214, 1);
+        }
+      }
+    }
+
+    .mat-card-subtitle {
+      font-family: 'Merriweather', serif;
+      font-size: 17px;
+
+      @media (min-width: $small) {
+        font-size: 20px;
+      }
+
+      &.edited-subtitle {
+        font-size: 15px;
+      }
+    }
+
+    .img-wrapper {
+      padding: 10px;
+
+      img {
+        max-width: 100%;
+        width: auto;
+        height: auto !important;
+      }
+    }
+
+    .mat-card-content {
+      font-size: 16px;
+      font-family: 'Merriweather', serif;
+
+      @media (min-width: $small) {
+        font-size: 25px;
+      }
+    }
+
+    .tags-content {
+      padding: 10px;
+      overflow: hidden;
+      line-height: 30px;
+      overflow-wrap: break-word;
+
+      @media (min-width: $small) {
+        line-height: 50px;
+      }
+
+      span {
+        display: inline-block;
+
+        .tag {
+          padding: 5px;
+          background-color: rgba(109, 174, 214, 0.3);
+          color: #2c2c69;
+          margin: 4px;
+          text-decoration: none;
+          font-family: 'Cutive', serif;
+          font-size: 11px;
+
+          &:hover {
+            background-color: #2c2c69;
+            color: rgb(109, 174, 214, 1);
+          }
+
+          @media (min-width: $small) {
+            font-size: 18px;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  padding: 10px;
+  font-family: 'Merriweather', serif;
+  font-size: 25px;
+
+  .mat-icon {
+    font-size: 16px;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+
+    .mat-icon {
+      height: 25px;
+      width: 25px;
+      font-size: 40px;
+      line-height: 20px;
+
+      @media (min-width: $small) {
+        font-size: 70px;
+      }
+    }
+  }
+}

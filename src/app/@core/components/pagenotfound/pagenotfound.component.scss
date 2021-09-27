@@ -1,0 +1,39 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
+.notfound-wrapper {
+  padding: 20px;
+  font-family: 'Cutive', serif;
+  max-width: 80vw;
+
+  .notfound-wrapper-content {
+    background: ghostwhite;
+    padding: 20px;
+
+    .notfound-headings {
+
+      h1 {
+        font-size: 50px;
+
+        @media (min-width: $medium) {
+          font-size: 100px;
+        }
+      }
+    }
+
+    p {
+      padding: 10px;
+      font-size: 18px;
+      margin: 0;
+
+      a {
+        background-color: rgb(109, 174, 214, 0.3);
+        color: #2c2c69;
+
+        &:hover {
+          background-color: #2c2c69;
+          color: rgb(109, 174, 214, 1);
+        }
+      }
+    }
+  }
+}

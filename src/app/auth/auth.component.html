@@ -1,0 +1,58 @@
+<div class="auth-wrapper">
+
+  <div class="auth-content mat-elevation-z8">
+
+    <div *ngIf="!loggedUser"
+         fxLayout="column"
+         fxLayoutAlign="space-even center">
+
+      <div class="header" fxLayout="row" fxLayoutAlign="center">
+        <h1>Login</h1>
+        <mat-icon matTooltipPosition="right"
+                  color="primary"
+                  #tooltip="matTooltip"
+                  (click)="tooltip.toggle()"
+                  matTooltip="Current web application is used privately by the owner and not supposed to have
+          any other users. At least yet">
+          info
+        </mat-icon>
+      </div>
+
+      <div class="auth-form"
+           fxLayout="column"
+           fxLayoutAlign="space-around">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input [(ngModel)]="email" type="text" title="Email" matInput required>
+          <mat-error *ngIf="email === ''">Email is required and must be valid!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input [(ngModel)]="password" type="password" title="Password" matInput required>
+          <mat-error *ngIf="password === ''">Password is required!</mat-error>
+        </mat-form-field>
+
+        <button
+          (click)="login()"
+          [disabled]="!password || !email"
+          mat-raised-button
+          color="primary">Login
+        </button>
+      </div>
+
+    </div>
+
+    <div *ngIf="loggedUser" fxLayout="column" fxLayoutAlign="space-around">
+      <h1>Logged as {{ loggedUser.displayName }}</h1>
+      <button
+        (click)="logout()"
+        mat-raised-button
+        color="primary">Logout
+      </button>
+    </div>
+
+  </div>
+
+</div>

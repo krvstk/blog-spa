@@ -1,14 +1,84 @@
-<button mat-raised-button color="primary" [routerLink]="'./post/create'">add post</button>
+<app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 
-<h1>Hello, this is my blog. Im posting my experiments below.</h1>
-<div *ngFor="let post of posts$ | async; let i = index">
-  <p>Title: <a [routerLink]="'./post/' + post.url">{{ post.title }}</a></p>
-  <p>Author: {{ post.author }}</p>
-  <p>Content: {{ post.content }}</p>
-  <p>Tags:
-    <span *ngFor="let tag of post.tags">
-      <a [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
-  </span>
-  </p>
-  <hr>
+<div class="button-wrapper" fxLayoutAlign="center">
+  <button *ngIf="loggedUser"
+          mat-raised-button
+          color="accent"
+          fxFlex="25"
+          [routerLink]="'./post/create'">Create
+  </button>
 </div>
+
+<article *ngFor="let post of posts; let i = index" fxLayout="column" fxLayoutAlign="space-around stretch">
+
+  <mat-card class="post-card mat-elevation-z8">
+
+    <mat-card-header>
+      <mat-card-title>
+        <a [routerLink]="'./post/' + post.url">{{ post.title }}</a>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ post.dateCreated.toDate() | date:'d MMMM yyyy' }}
+      </mat-card-subtitle>
+      <mat-card-subtitle *ngIf="post.dateEdited" class="edited-subtitle">
+        Edited on {{ post.dateEdited.toDate() | date:'d MMMM yyyy' }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <div class="img-wrapper" fxLayoutAlign="center">
+      <img
+        mat-card-image
+        [src]="post.imageUrl"
+        alt="thumbnail"
+        (load)="isLoading = false"
+        (error)="isLoading = false">
+    </div>
+
+    <mat-card-content>
+      <p>
+        {{ post.description }}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button fxFlex="grow" mat-flat-button color="primary" [routerLink]="'./post/' + post.url">READ</button>
+    </mat-card-actions>
+
+    <div class="tags-content">
+      <span *ngFor="let tag of post.tags">
+        <a class="tag" [routerLink]="'/blog/tag/' + tag">{{ tag }}</a>
+      </span>
+    </div>
+
+  </mat-card>
+
+</article>
+
+<br>
+
+<div class="pagination" fxLayout="row" fxLayoutAlign="space-evenly center">
+  <button mat-icon-button
+          color="primary"
+          [disabled]="pageNumber === 1"
+          (click)="onPreviousPage()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>
+    Page {{ pageNumber }}
+    <mat-icon #tooltip="matTooltip"
+              matTooltipPosition="right"
+              (click)="tooltip.toggle()"
+              color="primary"
+              matTooltip="Grayed-out arrow means unavailability">
+      info
+    </mat-icon>
+  </span>
+  <button mat-icon-button
+          color="primary"
+          (click)="onNextPage()"
+          [disabled]="nextPageButtonDisabled || posts.length < pageSize">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>
+
+<br>

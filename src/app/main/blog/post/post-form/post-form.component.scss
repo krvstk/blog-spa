@@ -1,0 +1,36 @@
+@import "~src/scss/abstracts/_abstracts-dir";
+
+.form-wrapper {
+  padding: 20px;
+
+  form {
+    padding: 20px;
+    background: ghostwhite;
+
+    .form-header {
+      text-align: center;
+      font-family: 'Cutive', serif;
+    }
+
+    .quill-editor {
+      padding-bottom: 150px;
+      height: 600px;
+
+      @media (min-width: $small) {
+        padding-bottom: 100px;
+      }
+    }
+
+    img {
+      padding: 20px;
+    }
+  }
+
+  .form-buttons {
+    padding: 20px;
+  }
+}
+
+
+
+
