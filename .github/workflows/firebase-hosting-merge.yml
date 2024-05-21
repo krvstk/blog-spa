@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v2
+        with:
+          "node-version": '20'
+      - run: node generate-firebase-env.js
+        env:
+          FIREBASE_ENV_VARIABLES: '${{secrets.FIREBASE_ENV_VARIABLES}}'
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
