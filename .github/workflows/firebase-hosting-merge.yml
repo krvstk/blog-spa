@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          "node-version": '20'
+          node-version: '20'
       - run: node generate-firebase-env.js
         env:
           FIREBASE_ENV_VARIABLES: '${{secrets.FIREBASE_ENV_VARIABLES}}'
