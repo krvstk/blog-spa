@@ -50,6 +50,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate environment.ts
+        run: node generate-firebase-env.js
+
       - name: Build Angular app
         run: npm run build --if-present
 
