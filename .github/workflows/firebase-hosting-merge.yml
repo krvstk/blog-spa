@@ -16,7 +16,7 @@ jobs:
           node-version: '16'
       - run: node generate-firebase-env.js
         env:
-          FIREBASE_ENV_VARIABLES: '${{secrets.FIREBASE_ENV_VARIABLES}}'
+          FIREBASE_ENV_VARIABLES: ${{secrets.FIREBASE_ENV_VARIABLES}}
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
