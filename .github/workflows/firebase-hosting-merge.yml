@@ -24,26 +24,34 @@
 #          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MONO_BLOG_63879 }}
 #          channelId: live
 #          projectId: mono-blog-63879
-name: CI
+name: Deploy Angular App to Firebase Hosting
 
 on:
   push:
     branches:
-      - master
+      - main  # Change this to your default branch if it's not 'main'
 
 jobs:
-  firebase-deploy:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '14.x'
-      - run: npm install
-      - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+          node-version: '14'  # Use the version of Node.js your project needs
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the Angular app
+        run: npm run build
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           args: deploy --only hosting
         env:
