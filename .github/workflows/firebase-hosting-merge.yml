@@ -24,57 +24,27 @@
 #          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MONO_BLOG_63879 }}
 #          channelId: live
 #          projectId: mono-blog-63879
-name: Deploy to Firebase
+name: CI
 
 on:
   push:
     branches:
-      - master # Trigger on push to main branch
-  pull_request:
-    branches:
-      - master # Trigger on PRs targeting main branch
+      - master
 
 jobs:
-  build-and-deploy:
+  firebase-deploy:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
         with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Generate environment.ts
-        run: node generate-firebase-env.js
-
-      - name: Build Angular app
-        run: npm run build --if-present
-
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
-
-      - name: Login to Firebase
-        run: echo ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MONO_BLOG_63879 }} | firebase login --non-interactive
-
-      - name: Deploy to Firebase
-        run: firebase deploy --only hosting
-
-  merge-check:
-    needs: build-and-deploy
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run custom script on merge
-        run: |
-          echo "Merging has been detected."
-          # Add any custom scripts here that should run upon successful merge
+          node-version: '14.x'
+      - run: npm install
+      - run: npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MONO_BLOG_63879 }}
