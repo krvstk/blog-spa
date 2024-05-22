@@ -7,7 +7,6 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { FlexModule } from '@angular/flex-layout';
 import { QuillModule } from 'ngx-quill';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -45,7 +44,6 @@ import { environment } from '../../../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFirestoreModule,
-    FlexModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
