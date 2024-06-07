@@ -18,3 +18,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MONO_BLOG_63879 }}
           channelId: live
           projectId: mono-blog-63879
+          entrypoint: "./blog-spa"
