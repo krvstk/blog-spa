@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import firebase from 'firebase';
-import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
-import { QueryDocumentSnapshot } from '@angular/fire/firestore/interfaces';
+import {AngularFirestore, DocumentChangeAction, QueryDocumentSnapshot} from '@angular/fire/compat/firestore';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
@@ -22,12 +20,12 @@ export class BlogComponent implements OnInit, OnDestroy {
   firstSnapshotsPerPage = new Map();
   isLoading: boolean;
   lastSnapshot: QueryDocumentSnapshot<Post>;
-  loggedUser: firebase.User;
+  loggedUser: any;
   nextPageButtonDisabled: boolean = false;
   pageNumber: number = 1;
   pageSize: number = 10;
   posts: Post[] = [];
-  private unsubscribe: Subject<any>;
+  private unsubscribe: Subject<void>;
 
   constructor(
     private firestore: AngularFirestore,
@@ -57,7 +55,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.authService.userSubject$
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (user: firebase.User) => {
+        (user: any) => {
           this.loggedUser = user;
         }
       );

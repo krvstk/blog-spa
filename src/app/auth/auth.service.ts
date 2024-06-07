@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import firebase from 'firebase';
-import UserCredential = firebase.auth.UserCredential;
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { SnackBarService } from '@core/services/snack-bar.service';
 import { BehaviorSubject } from 'rxjs';
 
@@ -12,20 +10,20 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  user: firebase.User;
-  userSubject$: BehaviorSubject<firebase.User>;
+  user: any;
+  userSubject$: BehaviorSubject<any>;
 
   constructor(private router: Router,
               private auth: AngularFireAuth,
               private snackBarService: SnackBarService,
   ) {
-    this.userSubject$ = new BehaviorSubject<firebase.User>(null);
+    this.userSubject$ = new BehaviorSubject<any>(null);
   }
 
-  signInWithEmailAndPassword(email: string, password: string): Promise<void | UserCredential> {
+  signInWithEmailAndPassword(email: string, password: string): Promise<void | any> {
     return this.auth.signInWithEmailAndPassword(email, password)
       .then(
-        (res: UserCredential) => {
+        (res: any) => {
           this.user = res.user;
           this.snackBarService.open('Login success!', 'OK', 'SUCCESS');
           this.router.navigate(['/blog']);

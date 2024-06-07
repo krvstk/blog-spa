@@ -3,11 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { FlexModule } from '@angular/flex-layout';
 import { QuillModule } from 'ngx-quill';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +22,10 @@ import { PostFormComponent } from './post/post-form/post-form.component';
 import { SharedModule } from '../../shared/shared.module';
 import { TagsComponent } from './tags/tags.component';
 import { environment } from '../../../environments/environment';
+import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 
 @NgModule({
@@ -45,7 +44,6 @@ import { environment } from '../../../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFirestoreModule,
-    FlexModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,

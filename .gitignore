@@ -34,6 +34,7 @@ chrome-profiler-events*.json
 .history/*
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -54,3 +55,8 @@ firebase.json
 firestore.indexes.json
 firestore.rules
 storage.rules
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

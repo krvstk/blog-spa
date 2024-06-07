@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { QuillEditorComponent } from 'ngx-quill';
 
 import { AuthService } from '../../../../auth/auth.service';
@@ -21,7 +21,7 @@ import { SnackBarService } from '@core/services/snack-bar.service';
 export class PostFormComponent implements OnInit {
 
   selectFileEventTarget: HTMLInputElement;
-  form: FormGroup;
+  form: UntypedFormGroup;
   post: Post;
   updatedImageUrl: string;
   parsedImage: string | ArrayBuffer;
@@ -30,7 +30,7 @@ export class PostFormComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private blogService: BlogService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private firestore: AngularFirestore,
     private fireStorage: AngularFireStorage,
     private router: Router,

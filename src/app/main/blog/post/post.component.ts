@@ -1,8 +1,7 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
-import firebase from 'firebase';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -23,10 +22,10 @@ import { Title } from '@angular/platform-browser';
 export class PostComponent implements OnInit, OnDestroy {
 
   isLoading: boolean;
-  loggedUser: firebase.User;
+  loggedUser: any;
   post: Post;
   postUrl: string;
-  private unsubscribe: Subject<any>;
+  private unsubscribe: Subject<void>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -72,7 +71,7 @@ export class PostComponent implements OnInit, OnDestroy {
     this.authService.userSubject$
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (user: firebase.User) => {
+        (user: any) => {
           this.loggedUser = user;
         }
       );

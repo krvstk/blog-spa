@@ -14,15 +14,18 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2018",
       "dom"
     ],
     "paths": {
-      "@core/*": ["src/app/@core/*"]
-    }
+      "@core/*": [
+        "src/app/@core/*"
+      ]
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

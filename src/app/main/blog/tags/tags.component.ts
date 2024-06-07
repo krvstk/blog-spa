@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { Post } from '../post/post.model';
 import { takeUntil } from 'rxjs/operators';
@@ -19,7 +19,7 @@ export class TagsComponent implements OnInit {
   posts: Post[];
   tag: string;
   isLoading: boolean;
-  private unsubscribe: Subject<any>;
+  private unsubscribe: Subject<void>;
 
   constructor(
     private activatedRoute: ActivatedRoute,

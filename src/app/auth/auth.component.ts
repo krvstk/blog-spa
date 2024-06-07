@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import firebase from 'firebase';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
-
 
 @Component({
   selector: 'app-auth',
@@ -16,9 +14,9 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   email: string;
   password: string;
-  loggedUser: firebase.User;
+  loggedUser: any;
   showLoginForm: boolean = true;
-  private unsubscribe: Subject<any>;
+  private unsubscribe: Subject<void>;
 
   constructor(
     private authService: AuthService,
@@ -34,7 +32,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.authService.userSubject$
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (user: firebase.User) => {
+        (user: any) => {
           this.loggedUser = user;
         }
       );

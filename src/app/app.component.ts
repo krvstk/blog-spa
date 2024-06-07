@@ -3,12 +3,11 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Title } from '@angular/platform-browser';
 
-import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase';
 import { filter, map, mergeMap } from 'rxjs/operators';
 
 import { AuthService } from './auth/auth.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import {AngularFireAuth} from "@angular/fire/compat/auth";
 
 
 @Component({
@@ -28,7 +27,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ])
   ]
 })
-
 export class AppComponent {
   isPhoneScreen: boolean;
   topPosToStartShowing: number = 500;
@@ -72,7 +70,7 @@ export class AppComponent {
       )
       .subscribe(pathString => this.titleService.setTitle(baseTitle + pathString));
     this.angularFireAuth.onAuthStateChanged(
-      (user: firebase.User) => {
+      (user: any) => {
         if (user) {
           this.authService.userSubject$.next(user);
         } else {

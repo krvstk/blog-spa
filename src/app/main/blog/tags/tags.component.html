@@ -1,18 +1,14 @@
 <app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 <div class="tags-wrapper">
 
-  <div class="tags-content" fxLayout="column" fxLayoutAlign="space-around center">
+  <div class="tags-content">
 
-    <div class="heading" fxLayout="column" fxLayoutAlign="center">
+    <div class="heading">
       <h1>Posts with tag: <b>{{ tag }}</b></h1>
     </div>
 
-    <div class="tags-loop"
-         fxLayout="column"
-         fxLayoutAlign="space-around stretch"
-         fxLayout.gt-sm="row"
-         fxLayoutAlign.gt-sm="start stretch">
-      <div fxFlex="33" *ngFor="let post of posts">
+    <div class="tags-loop">
+      <div class="tags-post" fxFlex="33" *ngFor="let post of posts">
         <mat-card class="post-card mat-elevation-z8">
 
           <mat-card-header>
