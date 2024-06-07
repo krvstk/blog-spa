@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
-      - run: ls -la
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MONO_BLOG_63879 }}
           channelId: live
           projectId: mono-blog-63879
+          entrypoint: "./blog-spa"
