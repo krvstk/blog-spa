@@ -1,4 +1,4 @@
-@import "~src/scss/abstracts/_abstracts-dir";
+@import "scss/abstracts/_abstracts-dir";
 
 .tags-wrapper {
   padding: 10px;
@@ -8,6 +8,10 @@
   .tags-content {
     padding: 10px;
     background: ghostwhite;
+    flex-direction: column;
+    display: flex;
+    place-content: center space-around;
+    align-items: center;
 
     .heading {
       padding: 20px;
@@ -20,6 +24,17 @@
 
     .tags-loop {
       width: 100%;
+      flex-direction: column;
+      box-sizing: border-box;
+      display: flex;
+      place-content: stretch flex-start;
+      align-items: stretch;
+      max-height: 100%;
+
+      .tags-post {
+        flex: 1 1 100%;
+        max-width: 33%;
+      }
 
       .post-card {
         background: ghostwhite;
@@ -88,6 +103,12 @@
             }
           }
         }
+      }
+    }
+
+    @media (min-width: $small) {
+      .tags-loop {
+        flex-direction: column;
       }
     }
   }

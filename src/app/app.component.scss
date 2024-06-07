@@ -1,4 +1,4 @@
-@import "~src/scss/abstracts/_abstracts-dir";
+@import "scss/abstracts/_abstracts-dir";
 
 .app-wrapper {
   position: relative;
@@ -9,6 +9,46 @@
     top: 0;
     z-index: 10;
     backdrop-filter: blur(3px);
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center space-between;
+    align-items: center;
+
+    @media (max-width: $small) {
+      flex-direction: column;
+    }
+
+    .home-phone-screen {
+      height: 100%;
+      width: 100%;
+    }
+    @media (max-width: $small) {
+      .home-phone-screen {
+        flex-direction: row;
+        place-content: center space-between;
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+
+        .blyzniuk-dev-wrapper {
+          max-width: 25%;
+          margin-left: 5%;
+        }
+      }
+    }
+
+    .rest-menu {
+      flex-direction: row;
+      box-sizing: border-box;
+      display: flex;
+    }
+
+    @media (max-width: $small) {
+      .rest-menu {
+        flex-direction: column;
+      }
+    }
 
     @-moz-document url-prefix() {
       background: rgba(248, 248, 255, .9);
@@ -18,6 +58,7 @@
       font-family: 'Azeret Mono', monospace;
       font-size: 25px;
       padding: 40px;
+      margin-left: 5%;
 
       .blyzniuk-dev-heading {
         @-moz-document url-prefix() {

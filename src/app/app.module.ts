@@ -9,10 +9,8 @@ import { LayoutModule } from './layout/layout.module';
 import { PagenotfoundModule } from '@core/components/pagenotfound/pagenotfound.module';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './main/home/home.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import {AngularFireModule, FIREBASE_OPTIONS} from "@angular/fire/compat";
+import {getAuth, provideAuth} from "@angular/fire/auth";
 
 @NgModule({
   declarations: [
@@ -24,18 +22,18 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 
     MatIconModule,
 
+    AngularFireModule.initializeApp(environment.firebase),
+
     AppRoutingModule,
     AuthModule,
     LayoutModule,
     PagenotfoundModule,
   ],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
-  ],
 })
 export class AppModule {
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AngularFireAuthGuard, isNotAnonymous } from '@angular/fire/auth-guard';
+import { AuthGuard, isNotAnonymous } from '@angular/fire/auth-guard';
 import { map } from 'rxjs/operators';
 import { pipe } from 'rxjs';
 
@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'post/create',
     component: PostFormComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'create post' }
   },
   {
@@ -36,19 +36,19 @@ const routes: Routes = [
   {
     path: 'post/:postUrl/edit',
     component: PostFormComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'edit post' }
   },
   {
     path: 'tag/:tag',
     component: TagsComponent,
-    data: { animation: 'isRight'}
+    data: { animation: 'isRight'},
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 
 export class BlogRoutingModule {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Post } from './post/post.model';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
