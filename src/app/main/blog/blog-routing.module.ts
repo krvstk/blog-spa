@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard, isNotAnonymous } from '@angular/fire/auth-guard';
+import { isNotAnonymous} from '@angular/fire/auth-guard';
 import { map } from 'rxjs/operators';
 import { pipe } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { BlogComponent } from './blog.component';
 import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
 import { TagsComponent } from './tags/tags.component';
+import { AngularFireAuthGuard } from "@angular/fire/compat/auth-guard";
 
 
 export const redirectAnonymousTo = (redirect: any[]) =>
@@ -26,7 +27,7 @@ const routes: Routes = [
   {
     path: 'post/create',
     component: PostFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'create post' }
   },
   {
@@ -36,7 +37,7 @@ const routes: Routes = [
   {
     path: 'post/:postUrl/edit',
     component: PostFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'edit post' }
   },
   {
@@ -49,6 +50,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
+  providers: [AngularFireAuthGuard],
 })
 
 export class BlogRoutingModule {
