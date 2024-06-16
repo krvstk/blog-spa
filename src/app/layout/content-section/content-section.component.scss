@@ -1,7 +1,15 @@
 @import "scss/abstracts/_abstracts-dir";
 
 section {
-  padding: 10px 0 70px;
+  padding: 2rem 5rem calc(60px + 2rem);
   display: flex;
   justify-content: center;
+
+  @media (max-width: $medium) {
+    padding: 2rem 3rem calc(60px + 2rem);
+  }
+
+  @media (max-width: $small) {
+    padding: 2rem 1rem calc(60px + 2rem);
+  }
 }
