@@ -1,15 +1,14 @@
 <app-loader-spinner *ngIf="isLoading"></app-loader-spinner>
 
-<div class="button-wrapper" fxLayoutAlign="center">
+<div class="button-wrapper">
   <button *ngIf="loggedUser"
           mat-raised-button
           color="accent"
-          fxFlex="25"
           [routerLink]="'./post/create'">Create
   </button>
 </div>
 
-<article *ngFor="let post of posts; let i = index" fxLayout="column" fxLayoutAlign="space-around stretch">
+<article *ngFor="let post of posts; let i = index">
 
   <mat-card class="post-card mat-elevation-z8">
 
@@ -25,7 +24,7 @@
       </mat-card-subtitle>
     </mat-card-header>
 
-    <div class="img-wrapper" fxLayoutAlign="center">
+    <div class="img-wrapper">
       <img
         mat-card-image
         [src]="post.imageUrl"
@@ -41,7 +40,7 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button fxFlex="grow" mat-flat-button color="primary" [routerLink]="'./post/' + post.url">READ</button>
+      <button mat-flat-button color="primary" [routerLink]="'./post/' + post.url">READ</button>
     </mat-card-actions>
 
     <div class="tags-content">
@@ -56,7 +55,7 @@
 
 <br>
 
-<div class="pagination" fxLayout="row" fxLayoutAlign="space-evenly center">
+<div class="pagination">
   <button mat-icon-button
           color="primary"
           [disabled]="pageNumber === 1"

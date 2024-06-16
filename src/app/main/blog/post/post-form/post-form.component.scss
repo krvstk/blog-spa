@@ -6,6 +6,8 @@
   form {
     padding: 20px;
     background: ghostwhite;
+    display: flex;
+    flex-direction: column;
 
     .form-header {
       text-align: center;
@@ -28,6 +30,23 @@
 
   .form-buttons {
     padding: 20px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 25%;
+    }
+  }
+
+  .upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+
+    button {
+      width: 25%;
+    }
   }
 }
 

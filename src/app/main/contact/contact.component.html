@@ -1,24 +1,12 @@
 <div class="contact-wrapper">
 
-  <div class="contact-page mat-elevation-z8"
-       fxLayout="column"
-       fxLayoutAlign="space-evenly center"
-       fxLayout.xs="column"
-       fxLayoutGap="10px">
+  <div class="contact-page mat-elevation-z8">
 
     <h1>You may reach me via any social listed or fill the form and get feedback</h1>
 
-    <div class="contact-methods"
-         fxLayout="column"
-         fxLayoutAlign="space-evenly center"
-         fxLayout.gt-md="row"
-         fxLayoutGap="10px">
+    <div class="contact-methods">
 
-      <section class="socials"
-               fxLayout="row"
-               fxLayoutAlign="space-around center"
-               fxLayout.gt-md="column"
-               fxLayoutGap="5px">
+      <section class="socials">
         <a href="https://t.me/blyz_niuk">
           <img src="/assets/contact-icons/telegram-final.png"
                title="Contact me in telegram"
@@ -49,7 +37,7 @@
       <form [formGroup]="contactForm"
             #formDirective="ngForm"
             (ngSubmit)="onSubmit(formDirective)"
-            fxLayout="column">
+      >
 
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>

@@ -1,5 +1,14 @@
 @import "scss/abstracts/_abstracts-dir";
 
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+
+  button {
+    width: 25%;
+  }
+}
+
 article {
   padding: 10px;
 
@@ -44,6 +53,8 @@ article {
     }
 
     .img-wrapper {
+      display: flex;
+      justify-content: center;
       padding: 10px;
 
       img {
@@ -53,12 +64,18 @@ article {
       }
     }
 
-    .mat-card-content {
+    mat-card-content {
       font-size: 16px;
       font-family: 'Merriweather', serif;
 
       @media (min-width: $small) {
-        font-size: 25px;
+        font-size: 18px;
+      }
+    }
+
+    mat-card-actions {
+      button {
+        width: 100%;
       }
     }
 
@@ -103,10 +120,10 @@ article {
   padding: 10px;
   font-family: 'Merriweather', serif;
   font-size: 25px;
-
-  .mat-icon {
-    font-size: 16px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 
   button {
     display: flex;
@@ -115,12 +132,7 @@ article {
     .mat-icon {
       height: 25px;
       width: 25px;
-      font-size: 40px;
       line-height: 20px;
-
-      @media (min-width: $small) {
-        font-size: 70px;
-      }
     }
   }
 }

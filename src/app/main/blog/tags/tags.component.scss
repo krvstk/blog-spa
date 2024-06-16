@@ -24,7 +24,6 @@
 
     .tags-loop {
       width: 100%;
-      flex-direction: column;
       box-sizing: border-box;
       display: flex;
       place-content: stretch flex-start;
@@ -73,14 +72,24 @@
           font-family: 'Merriweather', serif;
         }
 
+        mat-card-actions {
+          button {
+            width: 100%;
+          }
+        }
+
         .tags-content {
           padding: 10px;
           overflow: hidden;
           line-height: 30px;
           overflow-wrap: break-word;
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
 
           span {
             display: inline-block;
+            cursor: pointer;
 
             .tag {
               padding: 5px;

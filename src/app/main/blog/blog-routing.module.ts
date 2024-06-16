@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard, isNotAnonymous } from '@angular/fire/auth-guard';
+import { AngularFireAuthGuard, isNotAnonymous } from '@angular/fire/compat/auth-guard';
 import { map } from 'rxjs/operators';
 import { pipe } from 'rxjs';
 
@@ -26,8 +26,8 @@ const routes: Routes = [
   {
     path: 'post/create',
     component: PostFormComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'create post' }
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'create post' },
   },
   {
     path: 'post/:postUrl',
@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'post/:postUrl/edit',
     component: PostFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin, title: 'edit post' }
   },
   {

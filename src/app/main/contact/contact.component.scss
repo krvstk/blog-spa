@@ -8,6 +8,39 @@
   .contact-page {
     padding: 20px;
     background: ghostwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 10px;
+
+      @media (min-width: $medium) {
+        flex-direction: row;
+      }
+
+      .socials {
+        display: flex;
+        gap: 5px;
+        justify-content: space-around;
+        align-items: center;
+
+        @media (min-width: $medium) {
+          flex-direction: column;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+    }
 
     @media (min-width: $small) {
       padding: 30px;

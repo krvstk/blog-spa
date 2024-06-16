@@ -20,7 +20,7 @@
       <span>by {{ post.author }}</span>
     </div>
 
-    <div class="img-wrapper" fxLayoutAlign="center">
+    <div class="img-wrapper">
       <img
         mat-card-image
         [src]="post.imageUrl"
@@ -37,9 +37,9 @@
             </span>
     </div>
 
-    <div *ngIf="loggedUser" class="button-wrapper" fxLayoutAlign="center" fxLayoutGap="10px">
-      <button fxFlex="25" mat-flat-button color="accent" (click)="onEditPost()">Edit</button>
-      <button fxFlex="25" mat-flat-button color="accent" (click)="onDeletePost(post.title)">Delete</button>
+    <div *ngIf="loggedUser" class="button-wrapper">
+      <button mat-flat-button color="accent" (click)="onEditPost()">Edit</button>
+      <button mat-flat-button color="accent" (click)="onDeletePost(post.title)">Delete</button>
     </div>
 
   </mat-card>
