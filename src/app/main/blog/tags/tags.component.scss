@@ -1,17 +1,20 @@
 @import "scss/abstracts/_abstracts-dir";
 
 .tags-wrapper {
-  padding: 10px;
   font-family: 'Cutive', serif;
-  min-width: 80vw;
 
   .tags-content {
-    padding: 10px;
     background: ghostwhite;
     flex-direction: column;
     display: flex;
     place-content: center space-around;
     align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+
+    .mat-mdc-card-header, .mdc-card__actions, .mat-mdc-card-content {
+      padding: 0;
+    }
 
     .heading {
       padding: 20px;
@@ -30,15 +33,24 @@
       align-items: stretch;
       max-height: 100%;
 
+      @media (max-width: $small) {
+        flex-direction: column;
+      }
+
       .tags-post {
-        flex: 1 1 100%;
+        //flex: 1 1 100%;
         max-width: 33%;
+
+        @media (max-width: $small) {
+          flex-direction: column;
+          max-width: 100%;
+        }
       }
 
       .post-card {
         background: ghostwhite;
         border-radius: 0;
-        margin: 10px;
+        padding: 1rem;
 
         .mat-card-title {
           font-size: 25px;
@@ -79,7 +91,6 @@
         }
 
         .tags-content {
-          padding: 10px;
           overflow: hidden;
           line-height: 30px;
           overflow-wrap: break-word;
@@ -92,10 +103,9 @@
             cursor: pointer;
 
             .tag {
-              padding: 5px;
+              padding: 0.5rem;
               background-color: rgb(109, 174, 214, 0.3);
               color: #2c2c69;
-              margin: 4px;
               text-decoration: none;
               font-family: 'Cutive', serif;
               font-size: 11px;

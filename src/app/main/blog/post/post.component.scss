@@ -1,23 +1,36 @@
 @import "scss/abstracts/_abstracts-dir";
 
 article {
-  padding: 10px;
+  margin-bottom: 2rem;
 
   .post-card {
-    min-width: 80vw;
     background: ghostwhite;
     border-radius: 0;
+    padding: 2rem;
 
-    img {
-      max-width: 800px;
-      padding: 10px;
+    @media (max-width: $small) {
+      padding: 1rem;
+    }
+
+    .mat-mdc-card-header, .mdc-card__actions, .mat-mdc-card-content {
+      padding: 0;
+    }
+
+    .img-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+
+      img {
+        max-width: 800px;
+        //padding: 10px;
+      }
     }
 
     .author-wrapper {
       text-align: right;
       font-size: 20px;
       font-family: 'CormorantInfant', serif;
-      padding-bottom: 10px;
 
       span {
         margin: 0;
@@ -62,7 +75,6 @@ article {
     .img-wrapper {
       display: flex;
       justify-content: center;
-      padding: 10px;
 
       img {
         max-width: 100%;
@@ -73,7 +85,7 @@ article {
 
     // quill-editor's dynamic class with innerHTML
     .ql-editor {
-      padding: 10px;
+      padding: 0 0 2rem 0;
       font-size: 16px;
       font-family: 'Merriweather', serif;
 
@@ -99,7 +111,6 @@ article {
     }
 
     .tags-content {
-      padding: 10px;
       overflow: hidden;
       line-height: 30px;
       overflow-wrap: break-word;
@@ -112,7 +123,7 @@ article {
         display: inline-block;
 
         .tag {
-          padding: 5px;
+          padding: 0.5rem;
           background-color: rgb(109, 174, 214, 0.3);
           color: #2c2c69;
           margin: 4px;
@@ -127,7 +138,6 @@ article {
 
           @media (min-width: $small) {
             font-size: 18px;
-            padding: 10px;
           }
         }
       }

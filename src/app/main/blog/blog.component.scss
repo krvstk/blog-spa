@@ -10,12 +10,20 @@
 }
 
 article {
-  padding: 10px;
+  margin-bottom: 2rem;
 
   .post-card {
-    max-width: 80vw;
     background: ghostwhite;
     border-radius: 0;
+    padding: 2rem;
+
+    @media (max-width: $small) {
+      padding: 1rem;
+    }
+
+    .mat-mdc-card-header, .mdc-card__actions, .mat-mdc-card-content {
+      padding: 0;
+    }
 
     .mat-card-title {
       font-size: 25px;
@@ -55,7 +63,7 @@ article {
     .img-wrapper {
       display: flex;
       justify-content: center;
-      padding: 10px;
+      padding: 1rem 0;
 
       img {
         max-width: 100%;
@@ -80,7 +88,6 @@ article {
     }
 
     .tags-content {
-      padding: 10px;
       overflow: hidden;
       line-height: 30px;
       overflow-wrap: break-word;
@@ -93,7 +100,7 @@ article {
         display: inline-block;
 
         .tag {
-          padding: 5px;
+          padding: 0.5rem;
           background-color: rgba(109, 174, 214, 0.3);
           color: #2c2c69;
           margin: 4px;
@@ -108,7 +115,6 @@ article {
 
           @media (min-width: $small) {
             font-size: 18px;
-            padding: 10px;
           }
         }
       }
@@ -117,7 +123,6 @@ article {
 }
 
 .pagination {
-  padding: 10px;
   font-family: 'Merriweather', serif;
   font-size: 25px;
   display: flex;
