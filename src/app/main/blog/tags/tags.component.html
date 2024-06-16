@@ -8,7 +8,7 @@
     </div>
 
     <div class="tags-loop">
-      <div class="tags-post" fxFlex="33" *ngFor="let post of posts">
+      <div class="tags-post" *ngFor="let post of posts">
         <mat-card class="post-card mat-elevation-z8">
 
           <mat-card-header>
@@ -30,7 +30,7 @@
           </mat-card-content>
 
           <mat-card-actions>
-            <button mat-raised-button fxFlex="grow" color="primary" [routerLink]="'/blog/post/' + post.url">READ
+            <button mat-raised-button color="primary" [routerLink]="'/blog/post/' + post.url">READ
             </button>
           </mat-card-actions>
 

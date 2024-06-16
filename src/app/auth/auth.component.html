@@ -3,10 +3,9 @@
   <div class="auth-content mat-elevation-z8">
 
     <div *ngIf="!loggedUser"
-         fxLayout="column"
-         fxLayoutAlign="space-even center">
+         class="not-logged-user">
 
-      <div class="header" fxLayout="row" fxLayoutAlign="center">
+      <div class="header">
         <h1>Login</h1>
         <mat-icon matTooltipPosition="right"
                   color="primary"
@@ -18,9 +17,7 @@
         </mat-icon>
       </div>
 
-      <div class="auth-form"
-           fxLayout="column"
-           fxLayoutAlign="space-around">
+      <div class="auth-form">
 
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
@@ -44,7 +41,8 @@
 
     </div>
 
-    <div *ngIf="loggedUser" fxLayout="column" fxLayoutAlign="space-around">
+    <div *ngIf="loggedUser"
+         class="logged-user">
       <h1>Logged as {{ loggedUser.displayName }}</h1>
       <button
         (click)="logout()"

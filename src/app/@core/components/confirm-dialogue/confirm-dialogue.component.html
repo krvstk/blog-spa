@@ -1,6 +1,6 @@
 <mat-toolbar class="mat-primary">
 
-  <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+  <mat-toolbar-row>
     <span>
        Confirm your action
     </span>
@@ -15,14 +15,15 @@
   <h3>{{confirmMessage}}</h3>
 </div>
 
-<div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-evenly center">
+<div class="confirm-dialog-buttons" mat-dialog-actions>
+  <button mat-raised-button
+          (click)="matDialogRef.close(false)">
+    No
+  </button>
+
   <button mat-raised-button
           color="primary"
           (click)="matDialogRef.close(true)">
     Yes
-  </button>
-  <button mat-raised-button
-          (click)="matDialogRef.close(false)">
-    No
   </button>
 </div>

@@ -1,19 +1,11 @@
 <div class="app-wrapper">
 
-  <header class="navbar mat-elevation-z8"
-          fxLayout="row"
-          fxLayout.xs="column"
-          fxLayoutAlign="space-between center">
+  <header class="navbar mat-elevation-z8">
 
     <div class="home-phone-screen"
-         fxFill
-         fxFlex.gt-xs="nogrow"
-         fxLayout.xs="row"
-         fxLayoutAlign.xs="space-between center">
+    >
       <span class="blyzniuk-dev-wrapper"
             routerLink="/"
-            fxFlex="25"
-            fxFlexOffset="5"
             (click)="showBurger = true">
         <span [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'"
               class="blyzniuk-dev-heading">blyzniuk.dev</span>
@@ -34,9 +26,7 @@
 
     <div class="rest-menu"
          *ngIf="!isPhoneScreen || !showBurger"
-         (click)="showBurger = true"
-         fxLayout="row"
-         fxLayout.xs="column">
+         (click)="showBurger = true">
       <span class="menu-router-link" routerLink="/blog">
         <span [@scrollPosition]="scrollPosition > 150 ? 'on' : 'off'"
               class="router-link-word">blog</span>

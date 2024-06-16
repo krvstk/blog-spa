@@ -60,6 +60,8 @@ article {
     }
 
     .img-wrapper {
+      display: flex;
+      justify-content: center;
       padding: 10px;
 
       img {
@@ -128,6 +130,16 @@ article {
             padding: 10px;
           }
         }
+      }
+    }
+
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      button {
+        width: 25%;
       }
     }
   }

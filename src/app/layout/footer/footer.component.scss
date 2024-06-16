@@ -8,13 +8,21 @@ footer {
   height: 60px;
   font-family: 'Azeret Mono', monospace;
   font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+  @media (max-width: $small) {
+    flex-direction: column;
+  }
 
   p {
-    margin: 0;
+      margin: 0;
 
-    a {
-      text-decoration: none;
-      color: #2c2c69
+      a {
+        text-decoration: none;
+        color: #2c2c69
+      }
     }
-  }
 }
