@@ -9,8 +9,7 @@ import { LayoutModule } from './layout/layout.module';
 import { PagenotfoundModule } from '@core/components/pagenotfound/pagenotfound.module';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './main/home/home.component';
-import {AngularFireModule, FIREBASE_OPTIONS} from "@angular/fire/compat";
-import {getAuth, provideAuth} from "@angular/fire/auth";
+import { AngularFireModule, FIREBASE_OPTIONS } from "@angular/fire/compat";
 
 @NgModule({
   declarations: [
