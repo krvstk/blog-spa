@@ -1,55 +1,57 @@
 @import "scss/abstracts/_abstracts-dir";
 
-.form-wrapper {
-  padding: 20px;
 
-  form {
+:host {
+  display: block;
+  width: 100%;
+
+  .form-wrapper {
     padding: 20px;
-    background: ghostwhite;
-    display: flex;
-    flex-direction: column;
 
-    .form-header {
-      text-align: center;
-      font-family: 'Cutive', serif;
-    }
+    form {
+      padding: 20px;
+      background: ghostwhite;
+      display: flex;
+      flex-direction: column;
 
-    .quill-editor {
-      padding-bottom: 150px;
-      height: 600px;
+      .form-header {
+        text-align: center;
+        font-family: 'Cutive', serif;
+      }
 
-      @media (min-width: $small) {
-        padding-bottom: 100px;
+      .quill-editor {
+        padding-bottom: 150px;
+        height: 600px;
+
+        @media (min-width: $small) {
+          padding-bottom: 100px;
+        }
+      }
+
+      img {
+        padding: 20px;
       }
     }
 
-    img {
+    .form-buttons {
       padding: 20px;
+      display: flex;
+      justify-content: center;
+
+      button {
+        width: 25%;
+      }
     }
-  }
 
-  .form-buttons {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    .upload-content {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
 
-    button {
-      width: 25%;
-    }
-  }
-
-  .upload-content {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 10px;
-
-    button {
-      width: 25%;
+      button {
+        width: 25%;
+      }
     }
   }
 }
-
-
-
-

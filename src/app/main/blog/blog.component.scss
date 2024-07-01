@@ -3,6 +3,7 @@
 .button-wrapper {
   display: flex;
   justify-content: center;
+  padding-bottom: 2rem;
 
   button {
     width: 25%;
@@ -91,6 +92,8 @@ article {
       overflow: hidden;
       line-height: 30px;
       overflow-wrap: break-word;
+      display: flex;
+      gap: 1rem;
 
       @media (min-width: $small) {
         line-height: 50px;
@@ -103,7 +106,6 @@ article {
           padding: 0.5rem;
           background-color: rgba(109, 174, 214, 0.3);
           color: #2c2c69;
-          margin: 4px;
           text-decoration: none;
           font-family: 'Cutive', serif;
           font-size: 11px;
