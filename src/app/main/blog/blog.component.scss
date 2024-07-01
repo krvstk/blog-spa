@@ -26,12 +26,13 @@ article {
       padding: 0;
     }
 
-    .mat-card-title {
+    .mat-mdc-card-title {
       font-size: 25px;
       font-family: 'CormorantInfant', serif;
       font-weight: bold;
       letter-spacing: -0.8px;
       word-spacing: 0.7px;
+      padding-bottom: 0.5rem;
 
       @media (min-width: $small) {
         font-size: 45px;
@@ -95,9 +96,9 @@ article {
       display: flex;
       gap: 1rem;
 
-      @media (min-width: $small) {
-        line-height: 50px;
-      }
+      //@media (min-width: $small) {
+      //  line-height: 50px;
+      //}
 
       span {
         display: inline-block;
