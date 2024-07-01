@@ -113,16 +113,11 @@
               color: #2c2c69;
               text-decoration: none;
               font-family: 'Cutive', serif;
-              font-size: 11px;
+              font-size: 12px;
 
               &:hover {
                 background-color: #2c2c69;
                 color: rgb(109, 174, 214, 1);
-              }
-
-              @media (min-width: $medium) {
-                font-size: 10px;
-                padding: 0.5rem;
               }
             }
           }

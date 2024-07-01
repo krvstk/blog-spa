@@ -23,7 +23,6 @@ article {
 
       img {
         max-width: 800px;
-        //padding: 10px;
       }
     }
 
@@ -89,11 +88,15 @@ article {
       font-size: 16px;
       font-family: 'Merriweather', serif;
 
+      p {
+        padding-bottom: 1rem;
+      }
+
       ul {
         padding-left: 5px;
 
         li {
-          padding: 0 5px;
+          //padding: 0 5px;
         }
       }
 
@@ -104,7 +107,7 @@ article {
           padding-left: 25px;
 
           li {
-            padding: 0 25px;
+            //padding: 0 25px;
           }
         }
       }
@@ -147,10 +150,32 @@ article {
       display: flex;
       justify-content: center;
       gap: 10px;
+      padding-top: 1rem;
 
       button {
         width: 25%;
       }
     }
+  }
+}
+
+
+.ql-snow .ql-editor {
+  pre {
+    background-color: #23241f;
+    color: #f8f8f2;
+    overflow: visible;
+    padding: 0.5rem;
+    border-radius: 3px;
+  }
+
+  ol li {
+    list-style-type: decimal;
+    padding-left: 0.15rem;
+  }
+
+  ul li {
+    list-style-type: disc;
+    padding-left: 0.15rem;
   }
 }
