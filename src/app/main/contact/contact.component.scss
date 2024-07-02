@@ -71,6 +71,14 @@
       background-color: rgb(109, 174, 214, 0.3);
       width: 100%;
 
+      mat-label, .mat-mdc-input-element {
+        font-size: 14px;
+      }
+
+      mat-error {
+        font-size: 12px;
+      }
+
       @media (min-width: $medium) {
         padding: 30px;
       }

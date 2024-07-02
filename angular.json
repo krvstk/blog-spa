@@ -33,9 +33,7 @@
               "node_modules/ngx-spinner/animations/ball-8bits.css",
               "src/styles.scss",
               "src/custom-theme.scss",
-              "./node_modules/quill/dist/quill.core.css",
-              "./node_modules/quill/dist/quill.bubble.css",
-              "./node_modules/quill/dist/quill.snow.css",
+              "./node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
