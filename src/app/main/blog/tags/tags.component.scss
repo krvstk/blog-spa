@@ -94,6 +94,7 @@
         }
 
         .tags-list {
+          flex-wrap: wrap;
           overflow: hidden;
           line-height: 30px;
           overflow-wrap: break-word;
@@ -106,6 +107,7 @@
           span {
             display: inline-block;
             cursor: pointer;
+            white-space: nowrap;
 
             .tag {
               padding: 0.5rem;
